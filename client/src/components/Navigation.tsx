@@ -66,6 +66,7 @@ export default function Navigation() {
             <Button
               className="bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
               onClick={() => handleNavLinkClick("#participar")}
+              style={{ backgroundColor: '#0073bb', color: 'white' }}
             >
               Faça Parte
             </Button>
@@ -112,6 +113,7 @@ export default function Navigation() {
               <Button
                 className="w-full bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
                 onClick={() => handleNavLinkClick("#participar")}
+                style={{ backgroundColor: '#0073bb', color: 'white' }}
               >
                 Faça Parte
               </Button>

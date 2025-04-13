@@ -63,7 +63,7 @@ export default function JoinFormSection() {
   }
 
   return (
-    <section id="form" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-un-blue to-eco-green">
+    <section id="participar" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-un-blue to-eco-green">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl font-bold font-heading text-white mb-6">Faça Parte dessa Transformação</h2>
         <p className="text-lg text-white mb-10">

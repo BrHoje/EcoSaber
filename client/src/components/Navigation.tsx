@@ -41,7 +41,7 @@ export default function Navigation() {
                 <span className="font-heading font-bold text-xl text-un-blue">EcoSaber</span>
               </div>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -51,7 +51,7 @@ export default function Navigation() {
                     handleNavLinkClick(link.href);
                   }}
                   className={cn(
-                    "border-b-2 px-1 pt-1 font-medium text-sm text-neutral-dark",
+                    "border-b-2 px-1 py-4 font-medium text-sm text-neutral-dark",
                     activeLink === link.href
                       ? "border-un-blue"
                       : "border-transparent hover:border-un-blue hover:text-un-blue"
@@ -64,10 +64,10 @@ export default function Navigation() {
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <Button
-              className="bg-un-blue hover:bg-opacity-90 transition-colors"
-              onClick={() => handleNavLinkClick("#form")}
+              className="bg-un-blue hover:bg-opacity-90 transition-colors text-white"
+              onClick={() => handleNavLinkClick("#participar")}
             >
-              Participar
+              Contato
             </Button>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
@@ -110,10 +110,10 @@ export default function Navigation() {
           <div className="flex items-center px-4">
             <div className="flex-shrink-0">
               <Button
-                className="w-full bg-un-blue hover:bg-opacity-90 transition-colors"
-                onClick={() => handleNavLinkClick("#form")}
+                className="w-full bg-un-blue hover:bg-opacity-90 transition-colors text-white"
+                onClick={() => handleNavLinkClick("#participar")}
               >
-                Participar
+                Contato
               </Button>
             </div>
           </div>

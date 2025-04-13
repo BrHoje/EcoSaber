@@ -103,8 +103,9 @@ const AccessibilityWidget = () => {
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button 
-            className="h-12 w-12 rounded-full bg-eco-green hover:bg-eco-green/90 text-white shadow-lg"
+            className="h-12 w-12 rounded-full bg-un-blue hover:bg-un-blue/90 text-white shadow-lg opacity-100"
             aria-label="Opções de acessibilidade"
+            style={{ backgroundColor: '#0073bb', borderColor: '#ffffff', borderWidth: '2px' }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle>

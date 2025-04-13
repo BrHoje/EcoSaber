@@ -1,0 +1,133 @@
+{
+  "translation": {
+    "common": {
+      "appName": "EcoSaber",
+      "readMore": "Read More",
+      "learnMore": "Learn More",
+      "watch": "Watch",
+      "download": "Download",
+      "submit": "Submit",
+      "sending": "Sending...",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "city": "City/State",
+      "message": "Message (optional)",
+      "selectOption": "Select an option"
+    },
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "sdg": "SDG",
+      "campaign": "Campaign",
+      "resources": "Resources",
+      "impact": "Impact",
+      "join": "Join this Transformation"
+    },
+    "hero": {
+      "title": "EcoSaber: Education for a Sustainable Future",
+      "subtitle": "Promoting awareness about Quality Education (SDG 4) to build more conscious and sustainable communities.",
+      "cta1": "Our Campaign",
+      "cta2": "About SDG 4"
+    },
+    "about": {
+      "title": "About EcoSaber",
+      "description": "EcoSaber is an initiative from the Federal University of Paraíba that aims to promote quality education and raise awareness about UN's SDG 4.",
+      "mission": "Our Mission",
+      "missionText": "To promote quality education and sustainable development through awareness campaigns, participatory projects, and sharing of educational resources.",
+      "vision": "Our Vision",
+      "visionText": "A world where everyone has access to inclusive, equitable, and quality education that promotes lifelong learning opportunities."
+    },
+    "sdg": {
+      "title": "SDG 4: Quality Education",
+      "description": "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
+      "whyImportant": "Why is Quality Education important?",
+      "importanceText1": "Quality education is the foundation for improving people's lives and achieving sustainable development. Besides improving quality of life, access to inclusive education can help provide local populations with the tools needed to develop innovative solutions to the world's greatest problems.",
+      "importanceText2": "SDG 4 aims to ensure inclusive and equitable quality education and promote lifelong learning opportunities for all. This goal ensures that all girls and boys complete free, equitable, and quality primary and secondary education.",
+      "target": "Target",
+      "targets": [
+        "4.1 By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education.",
+        "4.2 By 2030, ensure that all girls and boys have access to quality early childhood development.",
+        "4.3 By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education.",
+        "4.4 By 2030, substantially increase the number of youth and adults who have relevant skills for employment, decent jobs and entrepreneurship.",
+        "4.5 By 2030, eliminate gender disparities in education and ensure equal access to all levels of education and vocational training.",
+        "4.6 By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy."
+      ]
+    },
+    "campaign": {
+      "title": "Our Campaign",
+      "description": "We are committed to promoting actions and projects that contribute to quality education in our community. Check out our initiatives:",
+      "initiative1": "Community Libraries",
+      "initiative1Text": "Establishing reading spaces in communities with limited access to books and educational resources.",
+      "initiative2": "Teacher Training",
+      "initiative2Text": "Workshops and training for teachers on innovative and inclusive teaching methodologies.",
+      "initiative3": "Digital Inclusion",
+      "initiative3Text": "Programs to promote access and use of digital technologies in the educational process.",
+      "initiative4": "Environmental Education",
+      "initiative4Text": "Projects that integrate sustainability into school curricula and promote environmental awareness."
+    },
+    "resources": {
+      "title": "Educational Resources",
+      "description": "Explore our materials and resources to learn more about quality education and sustainable development.",
+      "materials": "Materials",
+      "videos": "Videos",
+      "guides": "Guides and Manuals",
+      "research": "Research",
+      "caseStudies": "Case Studies"
+    },
+    "impact": {
+      "title": "Our Impact",
+      "description": "Learn about the results of our initiatives and how we are making a difference in promoting quality education.",
+      "testimonials": "Testimonials",
+      "statistics": "Statistics",
+      "reaching": "Reaching",
+      "schools": "Schools",
+      "teachers": "Teachers",
+      "students": "Students",
+      "communities": "Communities"
+    },
+    "join": {
+      "title": "Join this Transformation",
+      "description": "Join us on this journey for quality education and a more sustainable future for all.",
+      "howToContribute": "How would you like to contribute?",
+      "volunteer": "Volunteering",
+      "partnership": "Institutional Partnership",
+      "donation": "Financial Support",
+      "ambassador": "Project Ambassador",
+      "other": "Other form",
+      "terms": "I agree to receive communications about the project",
+      "privacyNote": "Your data is secure and will not be shared with third parties. You can unsubscribe at any time.",
+      "success": "Registration Sent!",
+      "successMsg": "Thank you for joining our project. We will contact you soon.",
+      "error": "Error sending",
+      "errorMsg": "An error occurred while submitting your form. Please try again."
+    },
+    "accessibility": {
+      "title": "Accessibility Options",
+      "readText": "Text to Speech",
+      "readPage": "Read Page",
+      "stopReading": "Stop Reading",
+      "fontSize": "Font Size",
+      "contrastMode": "Contrast Mode",
+      "normal": "Normal",
+      "highContrast": "High Contrast",
+      "colorBlind": "Color Blind",
+      "grayscale": "Grayscale",
+      "restoreDefault": "Restore Default"
+    },
+    "language": {
+      "title": "Language",
+      "pt": "Português",
+      "en": "English",
+      "es": "Español"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "contact": "Contact",
+      "address": "Federal University of Paraíba, João Pessoa - PB, Brazil",
+      "phone": "+55 83 3216-7200",
+      "email": "contact@ecosaber.com.br",
+      "followUs": "Follow Us"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "translation": {
+    "common": {
+      "appName": "EcoSaber",
+      "readMore": "Leia Mais",
+      "learnMore": "Saiba Mais",
+      "watch": "Assistir",
+      "download": "Baixar",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "fullName": "Nome Completo",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "city": "Cidade/Estado",
+      "message": "Mensagem (opcional)",
+      "selectOption": "Selecione uma opção"
+    },
+    "menu": {
+      "home": "Início",
+      "about": "Sobre",
+      "sdg": "ODS",
+      "campaign": "Campanha",
+      "resources": "Recursos",
+      "impact": "Impacto",
+      "join": "Faça Parte dessa Transformação"
+    },
+    "hero": {
+      "title": "EcoSaber: Educação para um Futuro Sustentável",
+      "subtitle": "Promovendo a conscientização sobre a Educação de Qualidade (ODS 4) para construir comunidades mais conscientes e sustentáveis.",
+      "cta1": "Nossa Campanha",
+      "cta2": "Sobre o ODS 4"
+    },
+    "about": {
+      "title": "Sobre o EcoSaber",
+      "description": "O EcoSaber é uma iniciativa da Universidade Federal da Paraíba que tem como objetivo promover a educação de qualidade e conscientizar sobre o ODS 4 da ONU.",
+      "mission": "Nossa Missão",
+      "missionText": "Promover a educação de qualidade e o desenvolvimento sustentável através de campanhas de conscientização, projetos participativos e compartilhamento de recursos educacionais.",
+      "vision": "Nossa Visão",
+      "visionText": "Um mundo onde todos tenham acesso a uma educação inclusiva, equitativa e de qualidade, que promova oportunidades de aprendizagem ao longo da vida."
+    },
+    "sdg": {
+      "title": "ODS 4: Educação de Qualidade",
+      "description": "Garantir o acesso à educação inclusiva, de qualidade e equitativa, e promover oportunidades de aprendizagem ao longo da vida para todos.",
+      "whyImportant": "Por que a Educação de Qualidade é importante?",
+      "importanceText1": "A educação de qualidade é a base para melhorar a vida das pessoas e alcançar o desenvolvimento sustentável. Além de melhorar a qualidade de vida, o acesso à educação inclusiva pode ajudar a fornecer às populações locais as ferramentas necessárias para desenvolver soluções inovadoras para os maiores problemas do mundo.",
+      "importanceText2": "O ODS 4 visa assegurar a educação inclusiva e equitativa de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos. Este objetivo garante que todas as meninas e meninos completem o ensino primário e secundário livre, equitativo e de qualidade.",
+      "target": "Meta",
+      "targets": [
+        "4.1 Até 2030, garantir que todas as meninas e meninos completem o ensino primário e secundário livre, equitativo e de qualidade.",
+        "4.2 Até 2030, garantir que todos os meninos e meninas tenham acesso a um desenvolvimento de qualidade na primeira infância.",
+        "4.3 Até 2030, assegurar a igualdade de acesso para todos os homens e mulheres à educação técnica, profissional e superior.",
+        "4.4 Até 2030, aumentar substancialmente o número de jovens e adultos que tenham habilidades relevantes para emprego, trabalho decente e empreendedorismo.",
+        "4.5 Até 2030, eliminar as disparidades de gênero na educação e garantir a igualdade de acesso a todos os níveis de educação e formação profissional.",
+        "4.6 Até 2030, garantir que todos os jovens e uma substancial proporção dos adultos, homens e mulheres, estejam alfabetizados e tenham adquirido o conhecimento básico de matemática."
+      ]
+    },
+    "campaign": {
+      "title": "Nossa Campanha",
+      "description": "Estamos comprometidos em promover ações e projetos que contribuam para a educação de qualidade em nossa comunidade. Confira nossas iniciativas:",
+      "initiative1": "Bibliotecas Comunitárias",
+      "initiative1Text": "Estabelecimento de espaços de leitura em comunidades com acesso limitado a livros e recursos educacionais.",
+      "initiative2": "Capacitação de Educadores",
+      "initiative2Text": "Workshops e treinamentos para professores sobre metodologias inovadoras e inclusivas de ensino.",
+      "initiative3": "Inclusão Digital",
+      "initiative3Text": "Programas para promover o acesso e o uso de tecnologias digitais no processo educacional.",
+      "initiative4": "Educação Ambiental",
+      "initiative4Text": "Projetos que integram a sustentabilidade aos currículos escolares e promovem a consciência ambiental."
+    },
+    "resources": {
+      "title": "Recursos Educacionais",
+      "description": "Explore nossos materiais e recursos para aprender mais sobre educação de qualidade e desenvolvimento sustentável.",
+      "materials": "Materiais",
+      "videos": "Vídeos",
+      "guides": "Guias e Manuais",
+      "research": "Pesquisa",
+      "caseStudies": "Estudos de Caso"
+    },
+    "impact": {
+      "title": "Nosso Impacto",
+      "description": "Conheça os resultados de nossas iniciativas e como estamos fazendo a diferença na promoção da educação de qualidade.",
+      "testimonials": "Depoimentos",
+      "statistics": "Estatísticas",
+      "reaching": "Alcançando",
+      "schools": "Escolas",
+      "teachers": "Professores",
+      "students": "Estudantes",
+      "communities": "Comunidades"
+    },
+    "join": {
+      "title": "Faça Parte dessa Transformação",
+      "description": "Junte-se a nós nessa jornada por uma educação de qualidade e um futuro mais sustentável para todos.",
+      "howToContribute": "Como gostaria de contribuir?",
+      "volunteer": "Voluntariado",
+      "partnership": "Parceria Institucional",
+      "donation": "Apoio Financeiro",
+      "ambassador": "Embaixador do Projeto",
+      "other": "Outra forma",
+      "terms": "Concordo em receber comunicações sobre o projeto",
+      "privacyNote": "Seus dados estão seguros e não serão compartilhados com terceiros. Você pode cancelar sua inscrição a qualquer momento.",
+      "success": "Inscrição Enviada!",
+      "successMsg": "Obrigado por se juntar ao nosso projeto. Entraremos em contato em breve.",
+      "error": "Erro ao enviar",
+      "errorMsg": "Ocorreu um erro ao enviar seu formulário. Por favor, tente novamente."
+    },
+    "accessibility": {
+      "title": "Opções de Acessibilidade",
+      "readText": "Leitura de Texto",
+      "readPage": "Ler Página",
+      "stopReading": "Parar Leitura",
+      "fontSize": "Tamanho do Texto",
+      "contrastMode": "Modo de Contraste",
+      "normal": "Normal",
+      "highContrast": "Alto Contraste",
+      "colorBlind": "Daltonismo",
+      "grayscale": "Escala de Cinza",
+      "restoreDefault": "Restaurar Padrão"
+    },
+    "language": {
+      "title": "Idioma",
+      "pt": "Português",
+      "en": "English",
+      "es": "Español"
+    },
+    "footer": {
+      "rights": "Todos os direitos reservados",
+      "contact": "Contato",
+      "address": "Universidade Federal da Paraíba, João Pessoa - PB",
+      "phone": "(83) 3216-7200",
+      "email": "contato@ecosaber.com.br",
+      "followUs": "Siga-nos"
+    }
+  }
+}

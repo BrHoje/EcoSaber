@@ -187,6 +187,9 @@ export function generateAcademicPdfTemplate(data: PdfTemplateData) {
           
           <div class="data-title">Liste as Metas selecionadas (pelo menos uma opção):</div>
           <p>ODS 4 - Educação de Qualidade: Assegurar a educação inclusiva e equitativa de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos.</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <img src="https://www.un.org/sustainabledevelopment/wp-content/uploads/2018/09/SDG_4_PoA.png" alt="ODS 4 - Educação de Qualidade" style="max-width: 100%; height: auto;" />
+          </div>
           <p>Meta 4.7 - Até 2030, garantir que todos os alunos adquiram conhecimentos e habilidades necessárias para promover o desenvolvimento sustentável, inclusive, entre outros, por meio da educação para o desenvolvimento sustentável e estilos de vida sustentáveis, direitos humanos, igualdade de gênero, promoção de uma cultura de paz e não-violência, cidadania global, e valorização da diversidade cultural e da contribuição da cultura para o desenvolvimento sustentável.</p>
         </div>
 
@@ -307,6 +310,91 @@ export function generateAcademicPdfTemplate(data: PdfTemplateData) {
         <p>Agradecemos à universidade por esta valiosa parceria e esperamos continuar colaborando em futuras iniciativas que promovam a educação de qualidade e o desenvolvimento sustentável em nossa comunidade.</p>
         
         <p class="centered"><em>Carlos Mendes - Coordenador de Projetos, Secretaria Municipal de Educação</em></p>
+      </div>
+      
+      <div class="page-break"></div>
+      
+      <div class="section">
+        <h2 class="centered">REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+        <p>CAMPO OBRIGATÓRIO – Siga a normas ABNT, para isso consulte sua Biblioteca Virtual;</p>
+        <p>Utilize como referências bibliográficas as indicações do Campo: Indicações Bibliográficas e as demais referências utilizadas no desenvolvimento do seu projeto.</p>
+        
+        <p>CIZOTO, Sonelise Auxiliadora. <strong>Homem, cultura e sociedade</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
+        <p>LOURENÇO, Denise. <strong>Teorias da comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
+        <p>MARTINO, Luís Mauro Sá. <strong>Métodos de pesquisa em Comunicação: projetos, ideias, práticas</strong>. Petrópolis: Vozes, 2018.</p>
+        <p>MASCARO, Laura Degaspare Monte. <strong>Direitos humanos e cidadania</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
+        <p>ROCHA, Ivone Ananias dos Santos. <strong>Legislação e ética na comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
+        <p>UNESCO. <strong>Educação para os Objetivos de Desenvolvimento Sustentável: objetivos de aprendizagem</strong>. Brasília: UNESCO, 2017.</p>
+      </div>
+      
+      <div class="section">
+        <h2 class="centered">AUTOAVALIAÇÃO DA ATIVIDADE:</h2>
+        <p>Realize a sua avaliação em relação à atividade desenvolvida considerando uma escala de 0 a 10 para cada pergunta, assinalando com um X:</p>
+        
+        <div style="margin: 20px 0;">
+          <p>1. A atividade permitiu o desenvolvimento do projeto de extensão articulando as competências e conteúdos propostos junto ao Curso?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>2. A atividade possui carga horária suficiente para a sua realização?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>3. A atividade é relevante para a sua formação e articulação de competências e conteúdos?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>4. A atividade contribui para o cumprimento dos objetivos definidos pela Instituição de Ensino (IES) e Curso, observando o Plano de Desenvolvimento Institucional e Projeto Pedagógico de Curso vigentes?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>5. A atividade contribui para a melhoria da sociedade por meio dos resultados demonstrados no relatório ou pelos relatos apresentados pelos envolvidos?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>6. A atividade permite o desenvolvimento de ações junto à Iniciação Científica e ao Ensino?</p>
+          <div style="display: flex; justify-content: space-between; margin: 10px 0 20px 0;">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span>()</span><span style="font-weight: bold;">(X)</span>
+          </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+          <p>7. Caso queira contribuir com maior detalhamento, traga seu depoimento/ sugestão.</p>
+          <p>Feliz com o resultado do projeto EcoSaber e com o impacto positivo que temos conseguido gerar na comunidade educacional. A receptividade dos educadores e estudantes superou nossas expectativas, demonstrando que há uma demanda real por recursos educacionais de qualidade sobre desenvolvimento sustentável.</p>
+        </div>
       </div>
 
       <div class="footer">

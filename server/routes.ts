@@ -3,6 +3,10 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertParticipantSchema } from "@shared/schema";
 import { ZodError } from "zod";
+import * as htmlPdf from "html-pdf-node";
+import { generateProjectPdfTemplate } from "./pdfTemplate";
+import path from "path";
+import fs from "fs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoints
@@ -63,6 +67,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ error: "Failed to create participant" });
       }
+    }
+  });
+
+  // Rota para gerar o PDF do projeto
+  app.get("/download-project-pdf", async (req, res) => {
+    try {
+      // Obtendo dados do storage
+      const resources = await storage.getAllResources();
+      const testimonials = await storage.getAllTestimonials();
+      const aboutStats = await storage.getStatsByCategory("about");
+      const impactStats = await storage.getStatsByCategory("impact");
+      
+      // Gerando o HTML para o PDF
+      const htmlContent = generateProjectPdfTemplate({
+        resources,
+        testimonials,
+        aboutStats,
+        impactStats
+      });
+      
+      // Configurando opções do PDF
+      const options = {
+        format: 'A4',
+        margin: {
+          top: '20mm',
+          right: '20mm',
+          bottom: '20mm',
+          left: '20mm'
+        },
+        printBackground: true,
+        preferCSSPageSize: true
+      };
+      
+      // Gerando o PDF
+      const file = { content: htmlContent };
+      const pdfBuffer = await htmlPdf.generatePdf(file, options);
+      
+      // Configurando cabeçalhos para download
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.pdf');
+      
+      // Enviando o PDF para download
+      res.send(pdfBuffer);
+    } catch (error) {
+      console.error("Erro ao gerar PDF:", error);
+      res.status(500).json({ error: "Falha ao gerar o PDF do projeto" });
     }
   });
 

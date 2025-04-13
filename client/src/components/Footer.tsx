@@ -1,7 +1,23 @@
+import { Button } from "@/components/ui/button";
+
 export default function Footer() {
+  const downloadPdf = () => {
+    window.location.href = '/download-project-pdf';
+  };
+
   return (
     <footer className="bg-neutral-dark py-12 px-4 sm:px-6 lg:px-8 text-white">
       <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col items-center justify-center mb-8">
+          <h3 className="text-xl font-bold mb-4">Projeto para Submissão Acadêmica</h3>
+          <Button 
+            onClick={downloadPdf}
+            className="bg-un-blue hover:bg-opacity-90 transition-colors flex items-center gap-2"
+          >
+            <i className="fas fa-file-pdf"></i>
+            Baixar Projeto em PDF
+          </Button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">

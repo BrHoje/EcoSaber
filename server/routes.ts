@@ -122,7 +122,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Rota para gerar o documento acadêmico no formato solicitado
+  // Rota para gerar o documento acadêmico diretamente em PDF
   app.get("/download-academic-document", async (req, res) => {
     try {
       // Obtendo dados do storage
@@ -139,12 +139,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
         impactStats
       });
       
-      // Configurando cabeçalhos para download do HTML
-      res.setHeader('Content-Type', 'text/html');
-      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Academico.html');
+      // Configuração para gerar o PDF
+      const options = { 
+        format: 'A4',
+        margin: { top: '15mm', right: '15mm', bottom: '15mm', left: '15mm' },
+        printBackground: true
+      };
+      const file = { content: htmlContent };
       
-      // Enviando o HTML para download, que pode ser convertido em PDF pelo usuário
-      res.send(htmlContent);
+      try {
+        // Tenta gerar o PDF
+        const pdfBuffer = await htmlPdf.generatePdf(file, options);
+        
+        // Configurando cabeçalhos para download do PDF
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Academico.pdf');
+        
+        // Enviando o PDF para download
+        res.send(pdfBuffer);
+      } catch (pdfError) {
+        console.error("Erro ao gerar PDF, enviando HTML como alternativa:", pdfError);
+        
+        // Enviando HTML como fallback em caso de erro na geração do PDF
+        res.setHeader('Content-Type', 'text/html');
+        res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Academico.html');
+        res.send(htmlContent);
+      }
     } catch (error) {
       console.error("Erro ao gerar documento acadêmico:", error);
       res.status(500).json({ error: "Falha ao gerar o documento acadêmico do projeto" });

@@ -22,7 +22,8 @@ export default function SDGSection() {
             <img 
               src="https://static.wixstatic.com/media/977b37_7e9c4c19bbea4a5dbe1ed07f57f89a45~mv2.png/v1/fill/w_1000,h_477,al_c,q_90,usm_0.66_1.00_0.01/977b37_7e9c4c19bbea4a5dbe1ed07f57f89a45~mv2.png" 
               alt="ODS 4 - Educação de Qualidade" 
-              className="h-24 w-auto"
+              className="max-w-full w-auto h-auto"
+              style={{ maxHeight: "250px" }}
             />
           </div>
           <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">ODS 4: Educação de Qualidade</h2>

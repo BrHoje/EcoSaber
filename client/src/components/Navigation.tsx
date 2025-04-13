@@ -65,7 +65,7 @@ export default function Navigation() {
               ))}
             </div>
           </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
+          <div className="hidden sm:ml-6 sm:flex sm:items-center gap-3">
             <Button
               className="bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
               onClick={() => handleNavLinkClick("#participar")}
@@ -73,6 +73,7 @@ export default function Navigation() {
             >
               Faça Parte dessa Transformação
             </Button>
+            <LanguageSwitcher />
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
             <button
@@ -111,8 +112,8 @@ export default function Navigation() {
           ))}
         </div>
         <div className="pt-4 pb-3 border-t border-neutral-mid">
-          <div className="flex items-center px-4">
-            <div className="flex-shrink-0">
+          <div className="flex items-center px-4 gap-2">
+            <div className="flex-1">
               <Button
                 className="w-full bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
                 onClick={() => handleNavLinkClick("#participar")}
@@ -120,6 +121,9 @@ export default function Navigation() {
               >
                 Faça Parte dessa Transformação
               </Button>
+            </div>
+            <div className="flex-shrink-0">
+              <LanguageSwitcher />
             </div>
           </div>
         </div>

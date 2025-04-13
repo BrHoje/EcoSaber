@@ -20,21 +20,26 @@ const LanguageSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full border-un-blue">
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="rounded-full border-un-blue bg-white hover:bg-gray-100"
+          style={{ width: '40px', height: '40px', minWidth: '40px', padding: '0' }}
+        >
           <Globe className="h-5 w-5 text-un-blue" />
           <span className="sr-only">{t('language.title')}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="bg-white shadow-lg border border-neutral-200">
         <DropdownMenuItem 
           onClick={() => changeLanguage('pt')}
-          className={currentLanguage.startsWith('pt') ? 'bg-muted font-medium' : ''}
+          className={currentLanguage.startsWith('pt') ? 'bg-blue-50 font-semibold text-un-blue' : 'hover:bg-blue-50'}
         >
           {t('language.pt')}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => changeLanguage('en')}
-          className={currentLanguage.startsWith('en') ? 'bg-muted font-medium' : ''}
+          className={currentLanguage.startsWith('en') ? 'bg-blue-50 font-semibold text-un-blue' : 'hover:bg-blue-50'}
         >
           {t('language.en')}
         </DropdownMenuItem>

@@ -24,7 +24,8 @@ export default function HeroSection() {
           <div className="flex flex-wrap gap-4">
             <Button 
               onClick={() => handleButtonClick("#campanha")}
-              className="bg-white text-un-blue font-semibold px-6 py-3 rounded-lg hover:bg-opacity-90 transition-colors"
+              className="bg-white text-un-blue font-bold px-6 py-3 rounded-lg hover:bg-opacity-90 transition-colors"
+              style={{ color: '#0073bb' }}
             >
               Nossa Campanha
             </Button>

@@ -11,18 +11,21 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertParticipantSchema } from "@shared/schema";
 import { z } from "zod";
-
-const formSchema = insertParticipantSchema.extend({
-  terms: z.boolean().refine((val) => val === true, {
-    message: "Você precisa concordar com os termos para continuar",
-  }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { useTranslation } from "react-i18next";
 
 export default function JoinFormSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
+  
+  // Define the schema with translations
+  const formSchema = insertParticipantSchema.extend({
+    terms: z.boolean().refine((val) => val === true, {
+      message: t('join.termsRequired', "Você precisa concordar com os termos para continuar"),
+    }),
+  });
+
+  type FormValues = z.infer<typeof formSchema>;
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -44,8 +47,8 @@ export default function JoinFormSection() {
       await apiRequest("POST", "/api/participants", participantData);
       
       toast({
-        title: "Inscrição Enviada!",
-        description: "Obrigado por se juntar ao nosso projeto. Entraremos em contato em breve.",
+        title: t('join.success'),
+        description: t('join.successMsg'),
         variant: "default",
       });
       
@@ -53,8 +56,8 @@ export default function JoinFormSection() {
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
-        title: "Erro ao enviar",
-        description: "Ocorreu um erro ao enviar seu formulário. Por favor, tente novamente.",
+        title: t('join.error'),
+        description: t('join.errorMsg'),
         variant: "destructive",
       });
     } finally {
@@ -65,9 +68,9 @@ export default function JoinFormSection() {
   return (
     <section id="participar" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-un-blue to-eco-green">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-bold font-heading text-white mb-6">Faça Parte dessa Transformação</h2>
+        <h2 className="text-3xl font-bold font-heading text-white mb-6">{t('join.title')}</h2>
         <p className="text-lg text-white mb-10">
-          Junte-se a nós nessa jornada por uma educação de qualidade e um futuro mais sustentável para todos.
+          {t('join.description')}
         </p>
         
         <div className="bg-white rounded-lg shadow-lg p-8">
@@ -79,7 +82,7 @@ export default function JoinFormSection() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome Completo</FormLabel>
+                      <FormLabel>{t('common.fullName')}</FormLabel>
                       <FormControl>
                         <Input {...field} />
                       </FormControl>
@@ -93,7 +96,7 @@ export default function JoinFormSection() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>E-mail</FormLabel>
+                      <FormLabel>{t('common.email')}</FormLabel>
                       <FormControl>
                         <Input type="email" {...field} />
                       </FormControl>
@@ -109,7 +112,7 @@ export default function JoinFormSection() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Telefone</FormLabel>
+                      <FormLabel>{t('common.phone')}</FormLabel>
                       <FormControl>
                         <Input type="tel" {...field} value={field.value || ''} />
                       </FormControl>
@@ -123,7 +126,7 @@ export default function JoinFormSection() {
                   name="city"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cidade/Estado</FormLabel>
+                      <FormLabel>{t('common.city')}</FormLabel>
                       <FormControl>
                         <Input {...field} value={field.value || ''} />
                       </FormControl>
@@ -138,19 +141,19 @@ export default function JoinFormSection() {
                 name="interest"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Como gostaria de contribuir?</FormLabel>
+                    <FormLabel>{t('join.howToContribute')}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecione uma opção" />
+                          <SelectValue placeholder={t('common.selectOption')} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="volunteer">Voluntariado</SelectItem>
-                        <SelectItem value="partnership">Parceria Institucional</SelectItem>
-                        <SelectItem value="donation">Apoio Financeiro</SelectItem>
-                        <SelectItem value="ambassador">Embaixador do Projeto</SelectItem>
-                        <SelectItem value="other">Outra forma</SelectItem>
+                        <SelectItem value="volunteer">{t('join.volunteer')}</SelectItem>
+                        <SelectItem value="partnership">{t('join.partnership')}</SelectItem>
+                        <SelectItem value="donation">{t('join.donation')}</SelectItem>
+                        <SelectItem value="ambassador">{t('join.ambassador')}</SelectItem>
+                        <SelectItem value="other">{t('join.other')}</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -163,7 +166,7 @@ export default function JoinFormSection() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Mensagem (opcional)</FormLabel>
+                    <FormLabel>{t('common.message')}</FormLabel>
                     <FormControl>
                       <Textarea rows={4} {...field} value={field.value || ''} />
                     </FormControl>
@@ -185,10 +188,10 @@ export default function JoinFormSection() {
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel>
-                        Concordo em receber comunicações sobre o projeto
+                        {t('join.terms')}
                       </FormLabel>
                       <p className="text-neutral-dark text-xs mt-1">
-                        Seus dados estão seguros e não serão compartilhados com terceiros. Você pode cancelar sua inscrição a qualquer momento.
+                        {t('join.privacyNote')}
                       </p>
                     </div>
                     <FormMessage />
@@ -201,7 +204,7 @@ export default function JoinFormSection() {
                 className="w-full bg-un-blue text-white font-semibold px-6 py-3 rounded-md hover:bg-opacity-90 transition-colors"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Enviando..." : "Enviar"}
+                {isSubmitting ? t('common.sending') : t('common.submit')}
               </Button>
             </form>
           </Form>

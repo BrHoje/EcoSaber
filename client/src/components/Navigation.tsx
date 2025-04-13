@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const navLinks = [
   { href: "#inicio", label: "Início" },
@@ -15,6 +17,7 @@ const navLinks = [
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#inicio");
+  const { t } = useTranslation();
 
   const handleNavLinkClick = (href: string) => {
     setActiveLink(href);

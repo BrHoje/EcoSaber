@@ -64,10 +64,10 @@ export default function Navigation() {
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <Button
-              className="bg-un-blue hover:bg-opacity-90 transition-colors text-white"
+              className="bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
               onClick={() => handleNavLinkClick("#participar")}
             >
-              Contato
+              Faça Parte
             </Button>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
@@ -110,10 +110,10 @@ export default function Navigation() {
           <div className="flex items-center px-4">
             <div className="flex-shrink-0">
               <Button
-                className="w-full bg-un-blue hover:bg-opacity-90 transition-colors text-white"
+                className="w-full bg-un-blue hover:bg-opacity-90 transition-colors text-white font-semibold"
                 onClick={() => handleNavLinkClick("#participar")}
               >
-                Contato
+                Faça Parte
               </Button>
             </div>
           </div>

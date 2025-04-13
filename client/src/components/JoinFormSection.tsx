@@ -111,7 +111,7 @@ export default function JoinFormSection() {
                     <FormItem>
                       <FormLabel>Telefone</FormLabel>
                       <FormControl>
-                        <Input type="tel" {...field} />
+                        <Input type="tel" {...field} value={field.value || ''} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -125,7 +125,7 @@ export default function JoinFormSection() {
                     <FormItem>
                       <FormLabel>Cidade/Estado</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} value={field.value || ''} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -165,7 +165,7 @@ export default function JoinFormSection() {
                   <FormItem>
                     <FormLabel>Mensagem (opcional)</FormLabel>
                     <FormControl>
-                      <Textarea rows={4} {...field} />
+                      <Textarea rows={4} {...field} value={field.value || ''} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

@@ -188,7 +188,7 @@ export function generateAcademicPdfTemplate(data: PdfTemplateData) {
           <div class="data-title">Liste as Metas selecionadas (pelo menos uma opção):</div>
           <p>ODS 4 - Educação de Qualidade: Assegurar a educação inclusiva e equitativa de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos.</p>
           <div style="text-align: center; margin: 20px 0;">
-            <img src="https://www.unicef.org/brazil/sites/unicef.org.brazil/files/styles/hero_desktop/public/ODS4.jpg" alt="ODS 4 - Educação de Qualidade" style="max-width: 100%; height: auto;" />
+            <img src="https://static.wixstatic.com/media/977b37_7e9c4c19bbea4a5dbe1ed07f57f89a45~mv2.png/v1/fill/w_1000,h_477,al_c,q_90,usm_0.66_1.00_0.01/977b37_7e9c4c19bbea4a5dbe1ed07f57f89a45~mv2.png" alt="ODS 4 - Educação de Qualidade" style="max-width: 100%; height: auto;" />
           </div>
           <p>Meta 4.7 - Até 2030, garantir que todos os alunos adquiram conhecimentos e habilidades necessárias para promover o desenvolvimento sustentável, inclusive, entre outros, por meio da educação para o desenvolvimento sustentável e estilos de vida sustentáveis, direitos humanos, igualdade de gênero, promoção de uma cultura de paz e não-violência, cidadania global, e valorização da diversidade cultural e da contribuição da cultura para o desenvolvimento sustentável.</p>
         </div>

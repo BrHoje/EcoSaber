@@ -87,32 +87,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
         impactStats
       });
       
-      // Configurando opções do PDF
-      const options = {
-        format: 'A4',
-        margin: {
-          top: '20mm',
-          right: '20mm',
-          bottom: '20mm',
-          left: '20mm'
-        },
-        printBackground: true,
-        preferCSSPageSize: true
-      };
+      // Configurando cabeçalhos para download do HTML como alternativa
+      res.setHeader('Content-Type', 'text/html');
+      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.html');
       
-      // Gerando o PDF
-      const file = { content: htmlContent };
-      const pdfBuffer = await htmlPdf.generatePdf(file, options);
-      
-      // Configurando cabeçalhos para download
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.pdf');
-      
-      // Enviando o PDF para download
-      res.send(pdfBuffer);
+      // Enviando o HTML para download, que pode ser convertido em PDF pelo usuário
+      res.send(htmlContent);
     } catch (error) {
-      console.error("Erro ao gerar PDF:", error);
-      res.status(500).json({ error: "Falha ao gerar o PDF do projeto" });
+      console.error("Erro ao gerar documento:", error);
+      res.status(500).json({ error: "Falha ao gerar o documento do projeto" });
+    }
+  });
+  
+  // Rota para baixar a documentação em formato TXT
+  app.get("/download-project-txt", (req, res) => {
+    try {
+      const filePath = path.join(process.cwd(), 'projeto_ecosaber_documentacao.txt');
+      
+      if (fs.existsSync(filePath)) {
+        // Configurando cabeçalhos para download
+        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Documentacao.txt');
+        
+        // Enviando o arquivo para download
+        const fileStream = fs.createReadStream(filePath);
+        fileStream.pipe(res);
+      } else {
+        res.status(404).json({ error: "Arquivo de documentação não encontrado" });
+      }
+    } catch (error) {
+      console.error("Erro ao baixar documentação:", error);
+      res.status(500).json({ error: "Falha ao baixar a documentação do projeto" });
     }
   });
 

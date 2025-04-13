@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 
-const navLinks = [
-  { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#ods", label: "ODS" },
-  { href: "#campanha", label: "Campanha" },
-  { href: "#recursos", label: "Recursos" },
-  { href: "#impacto", label: "Impacto" },
+const getNavLinks = (t: any) => [
+  { href: "#inicio", label: t('menu.home') },
+  { href: "#sobre", label: t('menu.about') },
+  { href: "#ods", label: t('menu.sdg') },
+  { href: "#campanha", label: t('menu.campaign') },
+  { href: "#recursos", label: t('menu.resources') },
+  { href: "#impacto", label: t('menu.impact') },
 ];
 
 export default function Navigation() {
@@ -45,7 +45,7 @@ export default function Navigation() {
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
-              {navLinks.map((link) => (
+              {getNavLinks(t).map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -71,7 +71,7 @@ export default function Navigation() {
               onClick={() => handleNavLinkClick("#participar")}
               style={{ backgroundColor: '#0073bb', color: 'white' }}
             >
-              Faça Parte dessa Transformação
+              {t('menu.join')}
             </Button>
             <LanguageSwitcher />
           </div>
@@ -92,7 +92,7 @@ export default function Navigation() {
       {/* Mobile menu */}
       <div className={cn("sm:hidden", !isMobileMenuOpen && "hidden")} id="mobile-menu">
         <div className="pt-2 pb-3 space-y-1">
-          {navLinks.map((link) => (
+          {getNavLinks(t).map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -119,7 +119,7 @@ export default function Navigation() {
                 onClick={() => handleNavLinkClick("#participar")}
                 style={{ backgroundColor: '#0073bb', color: 'white' }}
               >
-                Faça Parte dessa Transformação
+                {t('menu.join')}
               </Button>
             </div>
             <div className="flex-shrink-0">

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   const handleButtonClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -16,10 +18,10 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div className="md:col-span-7 text-white">
           <h1 className="text-3xl md:text-5xl font-bold font-heading mb-6">
-            EcoSaber: Educação para um Futuro Sustentável
+            {t('hero.title')}
           </h1>
           <p className="text-lg md:text-xl mb-8">
-            Promovendo a conscientização sobre a Educação de Qualidade (ODS 4) para construir comunidades mais conscientes e sustentáveis.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-wrap gap-4">
             <Button 
@@ -27,14 +29,14 @@ export default function HeroSection() {
               className="bg-white text-un-blue font-bold px-6 py-3 rounded-lg hover:bg-opacity-90 transition-colors"
               style={{ color: '#0073bb' }}
             >
-              Nossa Campanha
+              {t('hero.cta1')}
             </Button>
             <Button 
               onClick={() => handleButtonClick("#ods")}
               variant="outline" 
               className="border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors"
             >
-              Sobre o ODS 4
+              {t('hero.cta2')}
             </Button>
           </div>
         </div>

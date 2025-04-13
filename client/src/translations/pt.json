@@ -31,8 +31,22 @@
       "cta2": "Sobre o ODS 4"
     },
     "about": {
-      "title": "Sobre o EcoSaber",
-      "description": "O EcoSaber é uma iniciativa da Universidade Federal da Paraíba que tem como objetivo promover a educação de qualidade e conscientizar sobre o ODS 4 da ONU.",
+      "title": "Sobre o Projeto",
+      "description": "O EcoSaber é uma iniciativa que visa promover a educação de qualidade como ferramenta fundamental para alcançar o desenvolvimento sustentável.",
+      "problem": {
+        "title": "O Problema",
+        "description": "O acesso desigual à educação de qualidade continua sendo um desafio significativo em muitas comunidades. Sem conhecimento adequado sobre sustentabilidade, as pessoas não conseguem tomar decisões informadas para proteger o meio ambiente e promover práticas sustentáveis."
+      },
+      "solution": {
+        "title": "Nossa Solução",
+        "description": "O EcoSaber desenvolve programas educacionais e campanhas de conscientização que integram os princípios de desenvolvimento sustentável em todos os níveis de educação. Trabalhamos com escolas, comunidades e organizações locais para:",
+        "items": [
+          "Desenvolver materiais educativos acessíveis sobre sustentabilidade",
+          "Promover workshops e eventos para engajar a comunidade",
+          "Criar plataformas digitais para compartilhamento de conhecimento",
+          "Estabelecer parcerias com instituições educacionais e empresas"
+        ]
+      },
       "mission": "Nossa Missão",
       "missionText": "Promover a educação de qualidade e o desenvolvimento sustentável através de campanhas de conscientização, projetos participativos e compartilhamento de recursos educacionais.",
       "vision": "Nossa Visão",

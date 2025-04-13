@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { Stat } from "@shared/schema";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslation } from "react-i18next";
 
 export default function AboutSection() {
+  const { t } = useTranslation();
   const { data: stats, isLoading } = useQuery<Stat[]>({
     queryKey: ["/api/stats?category=about"],
   });
@@ -11,29 +13,29 @@ export default function AboutSection() {
     <section id="sobre" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">Sobre o Projeto</h2>
+          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">{t('about.title')}</h2>
           <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            O EcoSaber é uma iniciativa que visa promover a educação de qualidade como ferramenta fundamental para alcançar o desenvolvimento sustentável.
+            {t('about.description')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 className="text-2xl font-bold font-heading text-un-blue mb-4">O Problema</h3>
+            <h3 className="text-2xl font-bold font-heading text-un-blue mb-4">{t('about.problem.title')}</h3>
             <p className="mb-4">
-              O acesso desigual à educação de qualidade continua sendo um desafio significativo em muitas comunidades. Sem conhecimento adequado sobre sustentabilidade, as pessoas não conseguem tomar decisões informadas para proteger o meio ambiente e promover práticas sustentáveis.
+              {t('about.problem.description')}
             </p>
             
-            <h3 className="text-2xl font-bold font-heading text-un-blue mb-4 mt-8">Nossa Solução</h3>
+            <h3 className="text-2xl font-bold font-heading text-un-blue mb-4 mt-8">{t('about.solution.title')}</h3>
             <p className="mb-4">
-              O EcoSaber desenvolve programas educacionais e campanhas de conscientização que integram os princípios de desenvolvimento sustentável em todos os níveis de educação. Trabalhamos com escolas, comunidades e organizações locais para:
+              {t('about.solution.description')}
             </p>
             
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Desenvolver materiais educativos acessíveis sobre sustentabilidade</li>
-              <li>Promover workshops e eventos para engajar a comunidade</li>
-              <li>Criar plataformas digitais para compartilhamento de conhecimento</li>
-              <li>Estabelecer parcerias com instituições educacionais e empresas</li>
+              <li>{t('about.solution.items.0')}</li>
+              <li>{t('about.solution.items.1')}</li>
+              <li>{t('about.solution.items.2')}</li>
+              <li>{t('about.solution.items.3')}</li>
             </ul>
           </div>
 

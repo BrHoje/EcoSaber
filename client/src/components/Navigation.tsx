@@ -68,7 +68,7 @@ export default function Navigation() {
               onClick={() => handleNavLinkClick("#participar")}
               style={{ backgroundColor: '#0073bb', color: 'white' }}
             >
-              Faça Parte
+              Faça Parte dessa Transformação
             </Button>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
@@ -115,7 +115,7 @@ export default function Navigation() {
                 onClick={() => handleNavLinkClick("#participar")}
                 style={{ backgroundColor: '#0073bb', color: 'white' }}
               >
-                Faça Parte
+                Faça Parte dessa Transformação
               </Button>
             </div>
           </div>

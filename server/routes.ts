@@ -91,6 +91,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Rota para gerar o PDF do projeto
   app.get("/download-project-pdf", async (req, res) => {
+    let browser;
     try {
       // Obtendo dados do storage
       const resources = await storage.getAllResources();
@@ -106,12 +107,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
         impactStats
       });
       
-      // Configurando cabeçalhos para download do HTML como alternativa
-      res.setHeader('Content-Type', 'text/html');
-      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.html');
-      
-      // Enviando o HTML para download, que pode ser convertido em PDF pelo usuário
-      res.send(htmlContent);
+      try {
+        // Inicializa o navegador
+        browser = await puppeteer.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+        
+        // Cria uma nova página
+        const page = await browser.newPage();
+        
+        // Define o conteúdo HTML da página
+        await page.setContent(htmlContent, {
+          waitUntil: 'networkidle0'
+        });
+        
+        // Configuração para gerar o PDF
+        const pdfBuffer = await page.pdf({
+          format: 'A4',
+          margin: { top: '15mm', right: '15mm', bottom: '15mm', left: '15mm' },
+          printBackground: true
+        });
+        
+        // Configurando cabeçalhos para download do PDF
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.pdf');
+        
+        // Enviando o PDF para download
+        res.send(pdfBuffer);
+      } catch (pdfError) {
+        console.error("Erro ao gerar PDF com puppeteer, enviando HTML como alternativa:", pdfError);
+        
+        // Enviando HTML como fallback em caso de erro na geração do PDF
+        res.setHeader('Content-Type', 'text/html');
+        res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber.html');
+        res.send(htmlContent);
+      } finally {
+        // Fecha o navegador se ele foi aberto
+        if (browser) {
+          await browser.close();
+        }
+      }
     } catch (error) {
       console.error("Erro ao gerar documento:", error);
       res.status(500).json({ error: "Falha ao gerar o documento do projeto" });

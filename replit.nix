@@ -1,5 +1,7 @@
 {pkgs}: {
   deps = [
+    pkgs.postgresql
+    pkgs.dbus
     pkgs.nspr
     pkgs.chromium
     pkgs.pango

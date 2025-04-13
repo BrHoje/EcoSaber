@@ -114,7 +114,8 @@
       "success": "Registration Sent!",
       "successMsg": "Thank you for joining our project. We will contact you soon.",
       "error": "Error sending",
-      "errorMsg": "An error occurred while submitting your form. Please try again."
+      "errorMsg": "An error occurred while submitting your form. Please try again.",
+      "termsRequired": "You need to agree to the terms to continue"
     },
     "accessibility": {
       "title": "Accessibility Options",

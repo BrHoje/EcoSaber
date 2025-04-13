@@ -114,7 +114,8 @@
       "success": "Inscrição Enviada!",
       "successMsg": "Obrigado por se juntar ao nosso projeto. Entraremos em contato em breve.",
       "error": "Erro ao enviar",
-      "errorMsg": "Ocorreu um erro ao enviar seu formulário. Por favor, tente novamente."
+      "errorMsg": "Ocorreu um erro ao enviar seu formulário. Por favor, tente novamente.",
+      "termsRequired": "Você precisa concordar com os termos para continuar"
     },
     "accessibility": {
       "title": "Opções de Acessibilidade",

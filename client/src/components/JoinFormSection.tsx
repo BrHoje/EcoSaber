@@ -19,16 +19,16 @@ export default function JoinFormSection() {
   const { t } = useTranslation();
   
   // Define the schema with translations
-  const formSchema = insertParticipantSchema.extend({
+  const schema = insertParticipantSchema.extend({
     terms: z.boolean().refine((val) => val === true, {
       message: t('join.termsRequired', "Você precisa concordar com os termos para continuar"),
     }),
   });
 
-  type FormValues = z.infer<typeof formSchema>;
+  type FormValues = z.infer<typeof schema>;
   
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       name: "",
       email: "",

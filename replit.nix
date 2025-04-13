@@ -1,5 +1,7 @@
 {pkgs}: {
   deps = [
+    pkgs.nspr
+    pkgs.chromium
     pkgs.pango
     pkgs.alsa-lib
     pkgs.libxkbcommon

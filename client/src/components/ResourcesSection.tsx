@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Resource } from "@shared/schema";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function ResourcesSection() {
@@ -11,19 +10,17 @@ export default function ResourcesSection() {
   const { data: resources, isLoading } = useQuery<Resource[]>({
     queryKey: ["/api/resources"],
   });
-
-  const videos = [
-    {
-      title: "O que é Educação para o Desenvolvimento Sustentável?",
-      description: "Este vídeo explica de forma clara e didática o conceito de Educação para o Desenvolvimento Sustentável e sua importância para a construção de um futuro mais justo e sustentável.",
-      duration: "8:45 minutos"
-    },
-    {
-      title: "Série: Histórias de Transformação pela Educação",
-      description: "Conheça histórias inspiradoras de comunidades que transformaram sua realidade através da educação de qualidade e de práticas sustentáveis.",
-      duration: "12:20 minutos"
-    }
-  ];
+  
+  // Separar recursos de documentos e vídeos
+  const documentResources = resources?.filter(r => r.type !== "Video") || [];
+  const videoResources = resources?.filter(r => r.type === "Video") || [];
+  
+  // Função para extrair ID do vídeo do YouTube
+  const getYouTubeVideoId = (url: string) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
 
   return (
     <section id="recursos" className="py-16 px-4 sm:px-6 lg:px-8 bg-neutral-light">
@@ -77,7 +74,7 @@ export default function ResourcesSection() {
                 </div>
               ))
             ) : (
-              resources?.map((resource) => (
+              documentResources.map((resource) => (
                 <div key={resource.id} className={cn(
                   "bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow",
                   viewMode === 'list' && "flex flex-col md:flex-row"
@@ -101,13 +98,18 @@ export default function ResourcesSection() {
                     </span>
                     <h4 className="text-lg font-semibold font-heading text-neutral-dark mb-2">{resource.title}</h4>
                     <p className="text-gray-700 mb-4">{resource.description}</p>
-                    <Button variant="link" className="inline-flex items-center text-un-blue font-semibold hover:underline p-0">
+                    <a 
+                      href={resource.downloadUrl || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-un-blue font-semibold hover:underline"
+                    >
                       {resource.downloadUrl ? (
                         <>Baixar PDF <i className="fas fa-download ml-2"></i></>
                       ) : (
                         <>Visualizar <i className="fas fa-eye ml-2"></i></>
                       )}
-                    </Button>
+                    </a>
                   </div>
                 </div>
               ))
@@ -115,26 +117,56 @@ export default function ResourcesSection() {
           </div>
         </div>
         
-        <div>
-          <h3 className="text-2xl font-bold font-heading text-un-blue mb-6">Vídeos Educativos</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {videos.map((video, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="aspect-video bg-neutral-dark flex items-center justify-center">
-                  <i className="fas fa-play-circle text-white text-5xl opacity-80"></i>
-                </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold font-heading text-neutral-dark mb-2">{video.title}</h4>
-                  <p className="text-gray-700 mb-4">{video.description}</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <i className="fas fa-clock mr-2"></i> {video.duration}
+        {videoResources.length > 0 && (
+          <div>
+            <h3 className="text-2xl font-bold font-heading text-un-blue mb-6">Vídeos Educativos</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {videoResources.map((video) => {
+                const videoId = video.downloadUrl ? getYouTubeVideoId(video.downloadUrl) : null;
+                const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+                
+                return (
+                  <div key={video.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    {embedUrl ? (
+                      <div className="aspect-video">
+                        <iframe 
+                          width="100%" 
+                          height="100%" 
+                          src={embedUrl}
+                          title={video.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    ) : (
+                      <div className="aspect-video bg-neutral-dark flex items-center justify-center">
+                        <img 
+                          src={video.imageUrl || "https://placehold.co/600x400?text=No+Video"}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h4 className="text-lg font-semibold font-heading text-neutral-dark mb-2">{video.title}</h4>
+                      <p className="text-gray-700 mb-4">{video.description}</p>
+                      <a 
+                        href={video.downloadUrl || "#"} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-un-blue font-semibold hover:underline"
+                      >
+                        Assistir no YouTube <i className="fas fa-external-link-alt ml-2"></i>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

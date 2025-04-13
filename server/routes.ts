@@ -5,6 +5,7 @@ import { insertParticipantSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import * as htmlPdf from "html-pdf-node";
 import { generateProjectPdfTemplate } from "./pdfTemplate";
+import { generateAcademicPdfTemplate } from "./academicPdfTemplate";
 import path from "path";
 import fs from "fs";
 
@@ -118,6 +119,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Erro ao baixar documentação:", error);
       res.status(500).json({ error: "Falha ao baixar a documentação do projeto" });
+    }
+  });
+  
+  // Rota para gerar o documento acadêmico no formato solicitado
+  app.get("/download-academic-document", async (req, res) => {
+    try {
+      // Obtendo dados do storage
+      const resources = await storage.getAllResources();
+      const testimonials = await storage.getAllTestimonials();
+      const aboutStats = await storage.getStatsByCategory("about");
+      const impactStats = await storage.getStatsByCategory("impact");
+      
+      // Gerando o HTML para o documento acadêmico
+      const htmlContent = generateAcademicPdfTemplate({
+        resources,
+        testimonials,
+        aboutStats,
+        impactStats
+      });
+      
+      // Configurando cabeçalhos para download do HTML
+      res.setHeader('Content-Type', 'text/html');
+      res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Academico.html');
+      
+      // Enviando o HTML para download, que pode ser convertido em PDF pelo usuário
+      res.send(htmlContent);
+    } catch (error) {
+      console.error("Erro ao gerar documento acadêmico:", error);
+      res.status(500).json({ error: "Falha ao gerar o documento acadêmico do projeto" });
     }
   });
 

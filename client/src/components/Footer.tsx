@@ -8,6 +8,10 @@ export default function Footer() {
   const downloadTxt = () => {
     window.location.href = '/download-project-txt';
   };
+  
+  const downloadAcademic = () => {
+    window.location.href = '/download-academic-document';
+  };
 
   return (
     <footer className="bg-neutral-dark py-12 px-4 sm:px-6 lg:px-8 text-white">
@@ -29,6 +33,13 @@ export default function Footer() {
             >
               <i className="fas fa-file-alt"></i>
               Baixar Documentação em TXT
+            </Button>
+            <Button 
+              onClick={downloadAcademic}
+              className="bg-green-600 hover:bg-green-700 transition-colors flex items-center gap-2"
+            >
+              <i className="fas fa-file-alt"></i>
+              Baixar Documento Acadêmico
             </Button>
           </div>
         </div>

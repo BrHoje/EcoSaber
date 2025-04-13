@@ -1,5 +1,8 @@
 {pkgs}: {
   deps = [
+    pkgs.fontconfig
+    pkgs.glibc
+    pkgs.xorg.libxcb
     pkgs.postgresql
     pkgs.dbus
     pkgs.nspr

@@ -24,7 +24,7 @@ export default function Footer() {
               className="bg-un-blue hover:bg-opacity-90 transition-colors flex items-center gap-2"
             >
               <i className="fas fa-file-pdf"></i>
-              Baixar Projeto em HTML
+              Baixar Projeto como PDF
             </Button>
             <Button 
               onClick={downloadTxt}
@@ -39,7 +39,7 @@ export default function Footer() {
               className="bg-green-600 hover:bg-green-700 transition-colors flex items-center gap-2"
             >
               <i className="fas fa-file-alt"></i>
-              Baixar Documento Acadêmico
+              Baixar Documento Acadêmico como PDF
             </Button>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt mt-1 mr-3 text-neutral-mid"></i>
-                <span className="text-neutral-mid">Rua Exemplo, 123<br />São Paulo - SP</span>
+                <span className="text-neutral-mid">Av. Epitácio Pessoa, 753<br />João Pessoa - PB</span>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-envelope mr-3 text-neutral-mid"></i>
@@ -102,7 +102,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <i className="fas fa-phone mr-3 text-neutral-mid"></i>
-                <a href="tel:+551199999999" className="text-neutral-mid hover:text-white transition-colors">(11) 99999-9999</a>
+                <a href="tel:+558399999999" className="text-neutral-mid hover:text-white transition-colors">(83) 99999-9999</a>
               </li>
             </ul>
           </div>

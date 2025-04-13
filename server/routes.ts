@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertParticipantSchema, insertResourceSchema } from "@shared/schema";
 import { ZodError } from "zod";
-import * as htmlPdf from "html-pdf-node";
+import puppeteer from "puppeteer";
 import { generateProjectPdfTemplate } from "./pdfTemplate";
 import { generateAcademicPdfTemplate } from "./academicPdfTemplate";
 import path from "path";
@@ -142,6 +142,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Rota para gerar o documento acadêmico diretamente em PDF
   app.get("/download-academic-document", async (req, res) => {
+    let browser;
     try {
       // Obtendo dados do storage
       const resources = await storage.getAllResources();
@@ -157,17 +158,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
         impactStats
       });
       
-      // Configuração para gerar o PDF
-      const options = { 
-        format: 'A4',
-        margin: { top: '15mm', right: '15mm', bottom: '15mm', left: '15mm' },
-        printBackground: true
-      };
-      const file = { content: htmlContent };
-      
       try {
-        // Tenta gerar o PDF
-        const pdfBuffer = await htmlPdf.generatePdf(file, options);
+        // Inicializa o navegador
+        browser = await puppeteer.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+        
+        // Cria uma nova página
+        const page = await browser.newPage();
+        
+        // Define o conteúdo HTML da página
+        await page.setContent(htmlContent, {
+          waitUntil: 'networkidle0'
+        });
+        
+        // Configuração para gerar o PDF
+        const pdfBuffer = await page.pdf({
+          format: 'A4',
+          margin: { top: '15mm', right: '15mm', bottom: '15mm', left: '15mm' },
+          printBackground: true
+        });
         
         // Configurando cabeçalhos para download do PDF
         res.setHeader('Content-Type', 'application/pdf');
@@ -176,12 +187,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Enviando o PDF para download
         res.send(pdfBuffer);
       } catch (pdfError) {
-        console.error("Erro ao gerar PDF, enviando HTML como alternativa:", pdfError);
+        console.error("Erro ao gerar PDF com puppeteer, enviando HTML como alternativa:", pdfError);
         
         // Enviando HTML como fallback em caso de erro na geração do PDF
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Content-Disposition', 'attachment; filename=Projeto_EcoSaber_Academico.html');
         res.send(htmlContent);
+      } finally {
+        // Fecha o navegador se ele foi aberto
+        if (browser) {
+          await browser.close();
+        }
       }
     } catch (error) {
       console.error("Erro ao gerar documento acadêmico:", error);

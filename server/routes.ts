@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertParticipantSchema } from "@shared/schema";
+import { insertParticipantSchema, insertResourceSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import * as htmlPdf from "html-pdf-node";
 import { generateProjectPdfTemplate } from "./pdfTemplate";
@@ -67,6 +67,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       } else {
         res.status(500).json({ error: "Failed to create participant" });
+      }
+    }
+  });
+
+  app.post("/api/resources", async (req, res) => {
+    try {
+      const resourceData = insertResourceSchema.parse(req.body);
+      const newResource = await storage.createResource(resourceData);
+      res.status(201).json(newResource);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(400).json({ 
+          error: "Invalid resource data", 
+          details: error.errors 
+        });
+      } else {
+        console.error("Erro ao criar recurso:", error);
+        res.status(500).json({ error: "Failed to create resource" });
       }
     }
   });

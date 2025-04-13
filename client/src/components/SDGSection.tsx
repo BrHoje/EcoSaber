@@ -20,7 +20,7 @@ export default function SDGSection() {
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <img 
-              src="https://www.un.org/sustainabledevelopment/wp-content/uploads/2018/09/SDG_4_PoA.png" 
+              src="https://www.unicef.org/brazil/sites/unicef.org.brazil/files/styles/hero_desktop/public/ODS4.jpg" 
               alt="ODS 4 - Educação de Qualidade" 
               className="h-24 w-auto"
             />

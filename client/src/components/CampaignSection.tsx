@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function CampaignSection() {
+  const { t } = useTranslation();
   const strategies = [
     {
       icon: "lightbulb",
@@ -82,9 +84,9 @@ export default function CampaignSection() {
     <section id="campanha" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">Nossa Campanha</h2>
+          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">{t('campaign.title')}</h2>
           <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            Conheça as ações que estamos desenvolvendo para promover a educação de qualidade em nossa comunidade.
+            {t('campaign.description')}
           </p>
         </div>
 

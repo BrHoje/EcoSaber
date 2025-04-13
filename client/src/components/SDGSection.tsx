@@ -1,16 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 export default function SDGSection() {
+  const { t } = useTranslation();
+  // Using translation for targets
   const sdgTargets = [
     {
-      number: "Meta 4.1",
-      description: "Até 2030, garantir que todas as meninas e meninos completem o ensino primário e secundário livre, equitativo e de qualidade, que conduza a resultados de aprendizagem relevantes e eficazes."
+      number: t('sdg.target') + " 4.1",
+      description: t('sdg.targets.0')
     },
     {
-      number: "Meta 4.7",
-      description: "Até 2030, garantir que todos os alunos adquiram conhecimentos e habilidades necessárias para promover o desenvolvimento sustentável, inclusive por meio da educação para o desenvolvimento sustentável e estilos de vida sustentáveis."
+      number: t('sdg.target') + " 4.7",
+      description: t('sdg.targets.1')
     },
     {
-      number: "Meta 4.c",
-      description: "Até 2030, substancialmente aumentar o contingente de professores qualificados, inclusive por meio da cooperação internacional para a formação de professores, nos países em desenvolvimento."
+      number: t('sdg.target') + " 4.c",
+      description: t('sdg.targets.2')
     }
   ];
 
@@ -26,9 +30,9 @@ export default function SDGSection() {
               style={{ maxHeight: "250px" }}
             />
           </div>
-          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">ODS 4: Educação de Qualidade</h2>
+          <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-4">{t('sdg.title')}</h2>
           <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            Garantir o acesso à educação inclusiva, de qualidade e equitativa, e promover oportunidades de aprendizagem ao longo da vida para todos.
+            {t('sdg.description')}
           </p>
         </div>
 
@@ -43,13 +47,13 @@ export default function SDGSection() {
             </div>
             <div className="p-8 md:w-2/3">
               <h3 className="text-2xl font-bold font-heading text-un-blue mb-4">
-                Por que a Educação de Qualidade é importante?
+                {t('sdg.whyImportant')}
               </h3>
               <p className="text-gray-700 mb-4">
-                A educação de qualidade é a base para melhorar a vida das pessoas e alcançar o desenvolvimento sustentável. Além de melhorar a qualidade de vida, o acesso à educação inclusiva pode ajudar a fornecer às populações locais as ferramentas necessárias para desenvolver soluções inovadoras para os maiores problemas do mundo.
+                {t('sdg.importanceText1')}
               </p>
               <p className="text-gray-700">
-                O ODS 4 visa assegurar a educação inclusiva e equitativa de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos. Este objetivo garante que todas as meninas e meninos completem o ensino primário e secundário livre, equitativo e de qualidade.
+                {t('sdg.importanceText2')}
               </p>
             </div>
           </div>

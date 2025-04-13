@@ -31,8 +31,22 @@
       "cta2": "About SDG 4"
     },
     "about": {
-      "title": "About EcoSaber",
-      "description": "EcoSaber is an initiative from the Federal University of Paraíba that aims to promote quality education and raise awareness about UN's SDG 4.",
+      "title": "About the Project",
+      "description": "EcoSaber is an initiative that aims to promote quality education as a fundamental tool for achieving sustainable development.",
+      "problem": {
+        "title": "The Problem",
+        "description": "Unequal access to quality education continues to be a significant challenge in many communities. Without adequate knowledge about sustainability, people cannot make informed decisions to protect the environment and promote sustainable practices."
+      },
+      "solution": {
+        "title": "Our Solution",
+        "description": "EcoSaber develops educational programs and awareness campaigns that integrate the principles of sustainable development at all levels of education. We work with schools, communities and local organizations to:",
+        "items": [
+          "Develop accessible educational materials on sustainability",
+          "Promote workshops and events to engage the community",
+          "Create digital platforms for knowledge sharing",
+          "Establish partnerships with educational institutions and companies"
+        ]
+      },
       "mission": "Our Mission",
       "missionText": "To promote quality education and sustainable development through awareness campaigns, participatory projects, and sharing of educational resources.",
       "vision": "Our Vision",

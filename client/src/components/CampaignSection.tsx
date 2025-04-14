@@ -29,31 +29,31 @@ export default function CampaignSection() {
   const timeline = [
     {
       phase: "Fase 1: Planejamento e Mobilização",
-      period: "Março - Abril 2023",
+      period: "Janeiro - Fevereiro 2025",
       description: "Definição de objetivos, identificação de stakeholders e planejamento estratégico. Formação da equipe e estabelecimento das primeiras parcerias.",
       current: false
     },
     {
       phase: "Fase 2: Desenvolvimento de Conteúdo",
-      period: "Maio - Julho 2023",
+      period: "Março - Abril 2025",
       description: "Criação de materiais educativos, desenvolvimento da plataforma digital e capacitação da equipe de multiplicadores.",
-      current: false
-    },
-    {
-      phase: "Fase 3: Implementação",
-      period: "Agosto - Novembro 2023",
-      description: "Realização de workshops, eventos comunitários e lançamento da plataforma digital. Início do programa de formação de multiplicadores.",
       current: true
     },
     {
+      phase: "Fase 3: Implementação",
+      period: "Maio - Julho 2025",
+      description: "Realização de workshops, eventos comunitários e lançamento da plataforma digital. Início do programa de formação de multiplicadores.",
+      current: false
+    },
+    {
       phase: "Fase 4: Avaliação e Expansão",
-      period: "Dezembro 2023 - Fevereiro 2024",
+      period: "Agosto - Outubro 2025",
       description: "Avaliação de resultados, documentação de aprendizados e planejamento para expansão do programa para novas comunidades.",
       current: false
     },
     {
       phase: "Fase 5: Consolidação",
-      period: "Março - Dezembro 2024",
+      period: "Novembro - Dezembro 2025",
       description: "Institucionalização do programa, ampliação de parcerias e estabelecimento de um modelo sustentável de longo prazo.",
       current: false
     }

@@ -258,27 +258,27 @@ export function generateProjectPdfTemplate(data: PdfTemplateData) {
           </tr>
           <tr>
             <td>Planejamento e Mobilização</td>
-            <td>Janeiro - Fevereiro 2025</td>
+            <td>10-20 de Fevereiro 2025</td>
             <td>Definição de objetivos, identificação de stakeholders e planejamento estratégico. Formação da equipe e estabelecimento das primeiras parcerias.</td>
           </tr>
           <tr>
             <td>Desenvolvimento de Conteúdo</td>
-            <td>Março - Abril 2025</td>
+            <td>21-28 de Fevereiro 2025</td>
             <td>Criação de materiais educativos, desenvolvimento da plataforma digital e capacitação da equipe de multiplicadores.</td>
           </tr>
           <tr>
             <td>Implementação</td>
-            <td>Maio - Julho 2025</td>
+            <td>01-15 de Março 2025</td>
             <td>Realização de workshops, eventos comunitários e lançamento da plataforma digital. Início do programa de formação de multiplicadores.</td>
           </tr>
           <tr>
             <td>Avaliação e Expansão</td>
-            <td>Agosto - Outubro 2025</td>
+            <td>16-31 de Março 2025</td>
             <td>Avaliação de resultados, documentação de aprendizados e planejamento para expansão do programa para novas comunidades.</td>
           </tr>
           <tr>
             <td>Consolidação</td>
-            <td>Novembro - Dezembro 2025</td>
+            <td>01-14 de Abril 2025</td>
             <td>Institucionalização do programa, ampliação de parcerias e estabelecimento de um modelo sustentável de longo prazo.</td>
           </tr>
         </table>

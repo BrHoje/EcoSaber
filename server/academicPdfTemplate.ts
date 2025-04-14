@@ -162,11 +162,11 @@ export function generateAcademicPdfTemplate(data: PdfTemplateData) {
 
       <div class="section">
         <h2>INDICAÇÕES BIBLIOGRÁFICAS:</h2>
-        <p>CIZOTO, Sonelise Auxiliadora. Homem, cultura e sociedade. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
-        <p>LOURENÇO, Denise. Teorias da comunicação. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
-        <p>MARTINO, Luís Mauro Sá. Métodos de pesquisa em Comunicação: projetos, ideias, práticas. Petrópolis: Vozes, 2018.</p>
-        <p>MASCARO, Laura Degaspare Monte. Direitos humanos e cidadania. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
-        <p>ROCHA, Ivone Ananias dos Santos. Legislação e ética na comunicação. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
+        <p>CIZOTO, Sonelise Auxiliadora. Homem, cultura e sociedade. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>LOURENÇO, Denise. Teorias da comunicação. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>MARTINO, Luís Mauro Sá. Métodos de pesquisa em Comunicação: projetos, ideias, práticas. Petrópolis: Vozes, 2025.</p>
+        <p>MASCARO, Laura Degaspare Monte. Direitos humanos e cidadania. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>ROCHA, Ivone Ananias dos Santos. Legislação e ética na comunicação. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
       </div>
 
       <div class="page-break"></div>
@@ -319,12 +319,12 @@ export function generateAcademicPdfTemplate(data: PdfTemplateData) {
         <p>CAMPO OBRIGATÓRIO – Siga a normas ABNT, para isso consulte sua Biblioteca Virtual;</p>
         <p>Utilize como referências bibliográficas as indicações do Campo: Indicações Bibliográficas e as demais referências utilizadas no desenvolvimento do seu projeto.</p>
         
-        <p>CIZOTO, Sonelise Auxiliadora. <strong>Homem, cultura e sociedade</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
-        <p>LOURENÇO, Denise. <strong>Teorias da comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2016.</p>
-        <p>MARTINO, Luís Mauro Sá. <strong>Métodos de pesquisa em Comunicação: projetos, ideias, práticas</strong>. Petrópolis: Vozes, 2018.</p>
-        <p>MASCARO, Laura Degaspare Monte. <strong>Direitos humanos e cidadania</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
-        <p>ROCHA, Ivone Ananias dos Santos. <strong>Legislação e ética na comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2017.</p>
-        <p>UNESCO. <strong>Educação para os Objetivos de Desenvolvimento Sustentável: objetivos de aprendizagem</strong>. Brasília: UNESCO, 2017.</p>
+        <p>CIZOTO, Sonelise Auxiliadora. <strong>Homem, cultura e sociedade</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>LOURENÇO, Denise. <strong>Teorias da comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>MARTINO, Luís Mauro Sá. <strong>Métodos de pesquisa em Comunicação: projetos, ideias, práticas</strong>. Petrópolis: Vozes, 2025.</p>
+        <p>MASCARO, Laura Degaspare Monte. <strong>Direitos humanos e cidadania</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>ROCHA, Ivone Ananias dos Santos. <strong>Legislação e ética na comunicação</strong>. Londrina: Editora e Distribuidora Educacional S.A., 2025.</p>
+        <p>UNESCO. <strong>Educação para os Objetivos de Desenvolvimento Sustentável: objetivos de aprendizagem</strong>. Brasília: UNESCO, 2025.</p>
       </div>
       
       <div class="section">

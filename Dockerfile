@@ -18,6 +18,7 @@ COPY package*.json ./
 COPY tsconfig.json ./
 COPY vite.config.ts ./
 COPY drizzle.config.ts ./
+COPY theme.json ./
 
 # Copiar scripts de inicialização
 COPY init-db.sh ./

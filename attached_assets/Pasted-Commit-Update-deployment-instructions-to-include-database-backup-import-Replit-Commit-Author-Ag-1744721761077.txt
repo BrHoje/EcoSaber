@@ -1,0 +1,95 @@
+Commit: Update deployment instructions to include database backup import
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: b0319d7a-975e-4e5d-8c39-9651d34726e3
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/16054385-7574-4b93-bc6e-67205e0ab5a5/4f002090-8935-44fb-9519-a84f2111a9a6.jpg 
+##########################################
+### Download Github Archive Started...
+### Tue, 15 Apr 2025 12:55:24 GMT
+##########################################
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.09kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 0.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/17] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [ 2/17] WORKDIR /app
+#5 CACHED
+
+#6 [ 3/17] RUN apk update && apk add --no-cache     postgresql-client     bash     curl     jq     ca-certificates     tzdata
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 4.93kB done
+#7 DONE 0.0s
+
+#8 [ 7/17] COPY drizzle.config.ts ./
+#8 CACHED
+
+#9 [13/17] COPY server ./server
+#9 CACHED
+
+#10 [14/17] COPY shared ./shared
+#10 CACHED
+
+#11 [ 9/17] COPY start.sh ./
+#11 CACHED
+
+#12 [10/17] RUN chmod +x ./init-db.sh ./start.sh
+#12 CACHED
+
+#13 [11/17] RUN npm install
+#13 CACHED
+
+#14 [ 6/17] COPY vite.config.ts ./
+#14 CACHED
+
+#15 [ 8/17] COPY init-db.sh ./
+#15 CACHED
+
+#16 [12/17] COPY client ./client
+#16 CACHED
+
+#17 [ 5/17] COPY tsconfig.json ./
+#17 CACHED
+
+#18 [15/17] COPY public ./public
+#18 ERROR: failed to calculate checksum of ref 7544706c-f91f-446e-84a4-6535bdaa7862::4huf74o9uq9ffen26w1mm3p5u: "/public": not found
+
+#19 [16/17] COPY ecosaber_backup.dump ./ecosaber_backup.dump || true
+#19 ERROR: failed to calculate checksum of ref 7544706c-f91f-446e-84a4-6535bdaa7862::4huf74o9uq9ffen26w1mm3p5u: "/||": not found
+
+#20 [ 4/17] COPY package*.json ./
+#20 CANCELED
+------
+ > [15/17] COPY public ./public:
+------
+------
+ > [16/17] COPY ecosaber_backup.dump ./ecosaber_backup.dump || true:
+------
+Dockerfile:38
+--------------------
+  36 |     
+  37 |     # Copiar backup se disponível (ou será montado como volume)
+  38 | >>> COPY ecosaber_backup.dump ./ecosaber_backup.dump || true
+  39 |     
+  40 |     # Construir o projeto
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 7544706c-f91f-446e-84a4-6535bdaa7862::4huf74o9uq9ffen26w1mm3p5u: "/||": not found
+##########################################
+### Error
+### Tue, 15 Apr 2025 12:55:26 GMT
+##########################################
+
+Command failed with exit code 1: docker buildx build --network host -f /etc/easypanel/projects/ia/ecosaber/code/Dockerfile -t easypanel/ia/ecosaber --label 'keep=true' --build-arg 'GIT_SHA=43b3b0799e179241e72e14d0ceb14e24a6998122' /etc/easypanel/projects/ia/ecosaber/code/

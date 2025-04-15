@@ -1,19 +1,8 @@
-app:
-  build:
-    type: dockerfile
-  ports:
-    - port: 5000
-      published: 80
-  env:
-    - name: NODE_ENV
-      value: production
-    - name: DATABASE_URL
-      value: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
-    - name: PGPASSWORD
-      value: 47b47cd6c33582dafa23
-    - name: PGUSER
-      value: postgres
-    - name: PGHOST
-      value: ia_ecosaber-database
-    - name: PGDATABASE
-      value: ecosaber
+port: 80
+env:
+  NODE_ENV: production
+  DATABASE_URL: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
+  PGPASSWORD: 47b47cd6c33582dafa23
+  PGUSER: postgres
+  PGHOST: ia_ecosaber-database
+  PGDATABASE: ecosaber

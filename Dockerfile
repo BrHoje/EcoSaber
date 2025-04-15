@@ -32,10 +32,14 @@ RUN npm install
 COPY client ./client
 COPY server ./server
 COPY shared ./shared
-COPY public ./public
 
-# Copiar backup se disponível (ou será montado como volume)
-COPY ecosaber_backup.dump ./ecosaber_backup.dump || true
+# Criar diretório public vazio (caso não exista no repositório)
+RUN mkdir -p ./public
+
+# Tentativa de copiar o backup (mas não falhar se não existir)
+# Usa um truque com direcionamento para lidar com arquivos que podem não existir
+RUN touch dummy_file.dump
+COPY dummy_file.dump ecosaber_backup.dump* ./
 
 # Construir o projeto
 RUN npm run build

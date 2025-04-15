@@ -8,24 +8,13 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/ecosaber
-    depends_on:
-      - db
-    restart: unless-stopped
-    volumes:
-      - ./ecosaber_backup.dump:/app/ecosaber_backup.dump
-
-  db-init:
-    build: .
-    depends_on:
-      - db
-    environment:
       - PGPASSWORD=postgres
       - PGUSER=postgres
       - PGHOST=db
       - PGDATABASE=ecosaber
-    command: ./init-db.sh
-    volumes:
-      - ./ecosaber_backup.dump:/app/ecosaber_backup.dump
+    depends_on:
+      - db
+    restart: unless-stopped
 
   db:
     image: postgres:14-alpine

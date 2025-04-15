@@ -1,0 +1,121 @@
+Commit: Fix database initialization in production deployment
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: b0319d7a-975e-4e5d-8c39-9651d34726e3
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/16054385-7574-4b93-bc6e-67205e0ab5a5/ae919820-3e75-407f-9e31-0c8d5f368db7.jpg 
+##########################################
+### Download Github Archive Started...
+### Tue, 15 Apr 2025 13:10:16 GMT
+##########################################
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 879B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 0.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/16] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.89kB done
+#5 DONE 0.0s
+
+#6 [ 6/16] COPY vite.config.ts ./
+#6 CACHED
+
+#7 [ 2/16] WORKDIR /app
+#7 CACHED
+
+#8 [11/16] RUN npm install
+#8 CACHED
+
+#9 [ 8/16] COPY init-db.sh ./
+#9 CACHED
+
+#10 [ 3/16] RUN apk update && apk add --no-cache     postgresql-client     bash     curl     ca-certificates     tzdata
+#10 CACHED
+
+#11 [13/16] COPY server ./server
+#11 CACHED
+
+#12 [12/16] COPY client ./client
+#12 CACHED
+
+#13 [ 7/16] COPY drizzle.config.ts ./
+#13 CACHED
+
+#14 [ 4/16] COPY package*.json ./
+#14 CACHED
+
+#15 [ 9/16] COPY start.sh ./
+#15 CACHED
+
+#16 [14/16] COPY shared ./shared
+#16 CACHED
+
+#17 [ 5/16] COPY tsconfig.json ./
+#17 CACHED
+
+#18 [10/16] RUN chmod +x ./init-db.sh ./start.sh
+#18 CACHED
+
+#19 [15/16] RUN mkdir -p ./public
+#19 CACHED
+
+#20 [16/16] RUN npm run build
+#20 0.132 
+#20 0.132 > rest-express@1.0.0 build
+#20 0.132 > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+#20 0.132 
+#20 0.353 vite v5.4.14 building for production...
+#20 0.371 ✓ 0 modules transformed.
+#20 0.375 x Build failed in 7ms
+#20 0.375 error during build:
+#20 0.375 [vite-plugin-theme] [plugin vite-plugin-theme] Failed to read theme file: ENOENT: no such file or directory, open './theme.json'
+#20 0.375     at getRollupError (file:///app/node_modules/rollup/dist/es/shared/parseAst.js:396:41)
+#20 0.375     at error (file:///app/node_modules/rollup/dist/es/shared/parseAst.js:392:42)
+#20 0.375     at Object.error (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:20604:20)
+#20 0.375     at Object.buildStart (file:///app/node_modules/@replit/vite-plugin-shadcn-theme-json/dist/index.mjs:303:14)
+#20 0.375     at async Promise.all (index 5)
+#20 0.375     at async PluginDriver.hookParallel (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:20717:9)
+#20 0.375     at async file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21664:13
+#20 0.375     at async catchUnfinishedHookActions (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21135:16)
+#20 0.375     at async rollupInternal (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21661:5)
+#20 0.375     at async build (file:///app/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:65601:14)
+#20 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+------
+ > [16/16] RUN npm run build:
+0.375     at getRollupError (file:///app/node_modules/rollup/dist/es/shared/parseAst.js:396:41)
+0.375     at error (file:///app/node_modules/rollup/dist/es/shared/parseAst.js:392:42)
+0.375     at Object.error (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:20604:20)
+0.375     at Object.buildStart (file:///app/node_modules/@replit/vite-plugin-shadcn-theme-json/dist/index.mjs:303:14)
+0.375     at async Promise.all (index 5)
+0.375     at async PluginDriver.hookParallel (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:20717:9)
+0.375     at async file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21664:13
+0.375     at async catchUnfinishedHookActions (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21135:16)
+0.375     at async rollupInternal (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21661:5)
+0.375     at async build (file:///app/node_modules/vite/dist/node/chunks/dep-CHZK6zbr.js:65601:14)
+------
+Dockerfile:39
+--------------------
+  37 |     
+  38 |     # Construir o projeto
+  39 | >>> RUN npm run build
+  40 |     
+  41 |     # Expor a porta
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+##########################################
+### Error
+### Tue, 15 Apr 2025 13:10:17 GMT
+##########################################
+
+Command failed with exit code 1: docker buildx build --network host -f /etc/easypanel/projects/ia/ecosaber/code/Dockerfile -t easypanel/ia/ecosaber --label 'keep=true' --build-arg 'GIT_SHA=f6a4d15291ff0c8d5ac5b2dc9d32ed87e7f8d897' /etc/easypanel/projects/ia/ecosaber/code/

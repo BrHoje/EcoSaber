@@ -19,11 +19,11 @@ COPY package*.json ./
 COPY tsconfig.json ./
 COPY vite.config.ts ./
 COPY drizzle.config.ts ./
-COPY ecosaber_backup.dump ./
 
-# Tornar o script de inicialização executável
+# Copiar scripts de inicialização
 COPY init-db.sh ./
-RUN chmod +x ./init-db.sh
+COPY start.sh ./
+RUN chmod +x ./init-db.sh ./start.sh
 
 # Instalar dependências
 RUN npm install
@@ -33,6 +33,9 @@ COPY client ./client
 COPY server ./server
 COPY shared ./shared
 COPY public ./public
+
+# Copiar backup se disponível (ou será montado como volume)
+COPY ecosaber_backup.dump ./ecosaber_backup.dump || true
 
 # Construir o projeto
 RUN npm run build
@@ -45,4 +48,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:5000/ || exit 1
 
 # Comando para iniciar o servidor
-CMD ["npm", "start"]
+CMD ["./start.sh"]

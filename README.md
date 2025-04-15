@@ -53,6 +53,8 @@ Siga estas etapas para configurar o projeto em seu ambiente:
 
 ## Configuração do Banco de Dados
 
+### Opção 1: Instalação com Banco de Dados Vazio
+
 1. Crie um banco de dados PostgreSQL para o projeto:
    ```bash
    createdb ecosaber
@@ -67,6 +69,54 @@ Siga estas etapas para configurar o projeto em seu ambiente:
    ```bash
    npm run db:push
    ```
+
+### Opção 2: Importar Banco de Dados Existente com Dados
+
+Para garantir que você tenha todos os dados existentes (recursos, estatísticas, depoimentos, etc.):
+
+#### Usando o Backup Existente
+
+1. Baixe o arquivo de backup `ecosaber_backup.dump` da raiz do projeto
+
+2. No novo servidor, crie um banco de dados vazio:
+   ```bash
+   createdb ecosaber
+   ```
+
+3. Importe os dados do dump:
+   ```bash
+   pg_restore -U usuário -d ecosaber -v ecosaber_backup.dump
+   ```
+
+4. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto:
+   ```
+   DATABASE_URL=postgresql://usuario:senha@localhost:5432/ecosaber
+   ```
+
+#### Criando um Novo Backup (se necessário)
+
+Se você precisar criar um novo backup do banco de dados:
+
+1. No servidor original, exporte o banco de dados:
+   ```bash
+   pg_dump -U usuário -d ecosaber -Fc -f ecosaber_data.dump
+   # OU se estiver usando uma URL de conexão
+   pg_dump -Fc "postgresql://usuario:senha@localhost:5432/ecosaber" > ecosaber_data.dump
+   ```
+
+2. Transfira o arquivo `ecosaber_data.dump` para o novo servidor e siga as etapas 2-4 acima.
+
+### Esquema do Banco de Dados
+
+O esquema do banco de dados está definido no arquivo `shared/schema.ts` e inclui as seguintes tabelas:
+
+- **users**: Usuários da plataforma (administradores)
+- **participants**: Pessoas que se cadastraram para participar do projeto
+- **resources**: Recursos educacionais disponíveis na plataforma
+- **testimonials**: Depoimentos de participantes do projeto
+- **stats**: Estatísticas e métricas de impacto do projeto
+
+Para visualizar o esquema completo, consulte o arquivo `shared/schema.ts` no código-fonte.
 
 ## Executando o Projeto
 

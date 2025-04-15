@@ -11,7 +11,7 @@
 O projeto está configurado para usar o banco de dados previamente criado no EasyPanel com a seguinte URL:
 
 ```
-postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
+postgres://postgres:47b47cd6c33582dafa23@c5qiwz.easypanel.host:5432/ecosaber?sslmode=disable
 ```
 
 Para garantir que o banco de dados seja inicializado corretamente com todos os dados:
@@ -21,9 +21,9 @@ Para garantir que o banco de dados seja inicializado corretamente com todos os d
    * Caso precise substituir por uma versão mais recente, atualize o arquivo no repositório
 
 2. A inicialização do banco de dados acontecerá automaticamente durante o startup da aplicação
-   * O script `start.sh` chamará `init-db.sh` que verificará se o banco existe
-   * Se as tabelas não existirem, elas serão criadas
-   * O backup será importado automaticamente
+   * O script `start.sh` possui lógica robusta para criar o banco de dados se ele não existir
+   * Se as tabelas não existirem, elas serão criadas com dados básicos
+   * O sistema tenta reconectar várias vezes caso o banco não esteja disponível imediatamente
 
 ## Passos para Implantação
 
@@ -31,13 +31,14 @@ Para garantir que o banco de dados seja inicializado corretamente com todos os d
 
 2. Configure o projeto:
    - **Source**: GitHub (conecte ao seu repositório)
-   - **Build Method**: Dockerfile (o Dockerfile já está configurado)
+   - **Build Method**: Dockerfile (o Dockerfile já está configurado com build multi-estágio)
+   - **Port**: 5000 (esta é a porta exposta pelo Dockerfile)
    - **Environment Variables**:
      - `NODE_ENV`: production
-     - `DATABASE_URL`: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
+     - `DATABASE_URL`: postgres://postgres:47b47cd6c33582dafa23@c5qiwz.easypanel.host:5432/ecosaber?sslmode=disable
      - `PGPASSWORD`: 47b47cd6c33582dafa23
      - `PGUSER`: postgres
-     - `PGHOST`: ia_ecosaber-database
+     - `PGHOST`: c5qiwz.easypanel.host
      - `PGDATABASE`: ecosaber
 
 3. Clique em "Deploy" e aguarde a conclusão da implantação
@@ -57,7 +58,7 @@ Se enfrentar problemas com a inicialização do banco de dados:
 1. Verifique se o container pode acessar o banco de dados:
    ```bash
    docker exec -it {container_id} sh
-   psql -h ia_ecosaber-database -U postgres -d ecosaber
+   psql -h c5qiwz.easypanel.host -U postgres -d ecosaber
    ```
 
 2. Verifique os logs do container:
@@ -65,8 +66,22 @@ Se enfrentar problemas com a inicialização do banco de dados:
    docker logs {container_id}
    ```
 
-3. Tente importar manualmente o backup:
+3. Se o contêiner reiniciar constantemente:
+   * Verifique se a porta 5000 está configurada corretamente
+   * Certifique-se de que o EasyPanel está configurado para usar o Dockerfile
+   * Aumente os limites de memória do contêiner se necessário
+
+4. Em caso de erro persistente, crie manualmente as tabelas básicas:
    ```bash
    docker exec -it {container_id} sh
-   pg_restore -h ia_ecosaber-database -U postgres -d ecosaber --no-owner --clean /app/ecosaber_backup.dump
+   psql -h c5qiwz.easypanel.host -U postgres -d ecosaber -c "
+   CREATE TABLE IF NOT EXISTS users (
+     id SERIAL PRIMARY KEY,
+     username TEXT NOT NULL UNIQUE,
+     password_hash TEXT NOT NULL,
+     name TEXT NOT NULL,
+     email TEXT NOT NULL,
+     role TEXT NOT NULL,
+     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+   );"
    ```

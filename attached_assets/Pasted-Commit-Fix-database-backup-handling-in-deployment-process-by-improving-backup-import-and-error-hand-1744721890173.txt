@@ -1,0 +1,95 @@
+Commit: Fix database backup handling in deployment process by improving backup import and error handling.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: b0319d7a-975e-4e5d-8c39-9651d34726e3
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/16054385-7574-4b93-bc6e-67205e0ab5a5/dce2c9c6-1454-4e56-ace3-5d970cb86866.jpg 
+##########################################
+### Download Github Archive Started...
+### Tue, 15 Apr 2025 12:57:50 GMT
+##########################################
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.25kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 1.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/18] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [ 2/18] WORKDIR /app
+#5 CACHED
+
+#6 [ 3/18] RUN apk update && apk add --no-cache     postgresql-client     bash     curl     jq     ca-certificates     tzdata
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 738.32kB done
+#7 DONE 0.0s
+
+#8 [16/18] RUN touch dummy_file.dump
+#8 CACHED
+
+#9 [14/18] COPY shared ./shared
+#9 CACHED
+
+#10 [12/18] COPY client ./client
+#10 CACHED
+
+#11 [ 8/18] COPY init-db.sh ./
+#11 CACHED
+
+#12 [11/18] RUN npm install
+#12 CACHED
+
+#13 [13/18] COPY server ./server
+#13 CACHED
+
+#14 [ 5/18] COPY tsconfig.json ./
+#14 CACHED
+
+#15 [10/18] RUN chmod +x ./init-db.sh ./start.sh
+#15 CACHED
+
+#16 [ 9/18] COPY start.sh ./
+#16 CACHED
+
+#17 [ 6/18] COPY vite.config.ts ./
+#17 CACHED
+
+#18 [ 7/18] COPY drizzle.config.ts ./
+#18 CACHED
+
+#19 [15/18] RUN mkdir -p ./public
+#19 CACHED
+
+#20 [17/18] COPY dummy_file.dump ecosaber_backup.dump* ./
+#20 ERROR: failed to calculate checksum of ref 7544706c-f91f-446e-84a4-6535bdaa7862::5t6tysra3uso2k9fc2k28h1p5: "/dummy_file.dump": not found
+
+#21 [ 4/18] COPY package*.json ./
+#21 CANCELED
+------
+ > [17/18] COPY dummy_file.dump ecosaber_backup.dump* ./:
+------
+Dockerfile:42
+--------------------
+  40 |     # Usa um truque com direcionamento para lidar com arquivos que podem não existir
+  41 |     RUN touch dummy_file.dump
+  42 | >>> COPY dummy_file.dump ecosaber_backup.dump* ./
+  43 |     
+  44 |     # Construir o projeto
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 7544706c-f91f-446e-84a4-6535bdaa7862::5t6tysra3uso2k9fc2k28h1p5: "/dummy_file.dump": not found
+##########################################
+### Error
+### Tue, 15 Apr 2025 12:57:52 GMT
+##########################################
+
+Command failed with exit code 1: docker buildx build --network host -f /etc/easypanel/projects/ia/ecosaber/code/Dockerfile -t easypanel/ia/ecosaber --label 'keep=true' --build-arg 'GIT_SHA=d5d180a50f4a26aa9e01ceb26e7ea4958581947d' /etc/easypanel/projects/ia/ecosaber/code/

@@ -11,10 +11,7 @@ services:
       - name: NODE_ENV
         value: production
       - name: DATABASE_URL
-        fromService:
-          name: ecosaber-db
-          type: postgres
-          property: connectionString
+        value: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
     ports:
       - port: 5000
         published: 80
@@ -23,23 +20,31 @@ services:
         path: /app/ecosaber_backup.dump
         mode: ro
 
-  ecosaber-db:
+  db-init:
     source:
-      type: postgres
-      tag: 14
+      type: dockerfile
+      image: ecosaber
+    deploy:
+      restartPolicy:
+        name: on-failure
+        maxRetries: 5
     env:
-      - name: POSTGRES_PASSWORD
+      - name: DATABASE_URL
+        value: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
+      - name: PGPASSWORD
+        value: 47b47cd6c33582dafa23
+      - name: PGUSER
         value: postgres
-      - name: POSTGRES_USER
-        value: postgres
-      - name: POSTGRES_DB
+      - name: PGHOST
+        value: ia_ecosaber-database
+      - name: PGDATABASE
         value: ecosaber
+    command: ./init-db.sh
     volumes:
-      - name: pgdata
-        path: /var/lib/postgresql/data
+      - name: backup
+        path: /app/ecosaber_backup.dump
+        mode: ro
 
 volumes:
-  pgdata:
-    size: 1Gi
   backup:
     hostPath: ./ecosaber_backup.dump

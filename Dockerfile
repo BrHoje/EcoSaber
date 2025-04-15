@@ -2,8 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Instalar dependências do sistema necessárias para o PostgreSQL e ferramentas
-RUN apk add --no-cache postgresql-client
+# Instalar dependências do sistema necessárias
+RUN apk update && apk add --no-cache \
+    postgresql-client \
+    bash \
+    curl \
+    jq \
+    ca-certificates \
+    tzdata
+
+# Definir timezone
+ENV TZ=America/Sao_Paulo
 
 # Copiar arquivos de configuração do projeto
 COPY package*.json ./
@@ -30,6 +39,10 @@ RUN npm run build
 
 # Expor a porta
 EXPOSE 5000
+
+# Verificação de saúde
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:5000/ || exit 1
 
 # Comando para iniciar o servidor
 CMD ["npm", "start"]

@@ -1,0 +1,186 @@
+Commit: Improve application stability and database connection handling by enhancing Docker configuration and adding robust error handling.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: b0319d7a-975e-4e5d-8c39-9651d34726e3
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/16054385-7574-4b93-bc6e-67205e0ab5a5/0fc6c9c3-3195-4ef7-8701-4ad68e39fe4b.jpg 
+##########################################
+### Download Github Archive Started...
+### Tue, 15 Apr 2025 13:39:42 GMT
+##########################################
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.61kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 0.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/20] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [ 2/20] WORKDIR /app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 4.92kB done
+#6 DONE 0.0s
+
+#7 [ 3/20] RUN apk update && apk add --no-cache     postgresql-client     bash     curl     ca-certificates     tzdata     tini     netcat-openbsd
+#7 0.042 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+#7 0.471 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+#7 0.710 v3.21.3-315-g3da6a37ba96 [https://dl-cdn.alpinelinux.org/alpine/v3.21/main]
+#7 0.710 v3.21.3-326-gaa2471cd804 [https://dl-cdn.alpinelinux.org/alpine/v3.21/community]
+#7 0.710 OK: 25395 distinct packages available
+#7 0.742 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+#7 0.971 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+#7 1.158 (1/23) Installing ncurses-terminfo-base (6.5_p20241006-r3)
+#7 1.185 (2/23) Installing libncursesw (6.5_p20241006-r3)
+#7 1.213 (3/23) Installing readline (8.2.13-r0)
+#7 1.240 (4/23) Installing bash (5.2.37-r0)
+#7 1.273 Executing bash-5.2.37-r0.post-install
+#7 1.275 (5/23) Installing ca-certificates (20241121-r1)
+#7 1.311 (6/23) Installing brotli-libs (1.1.0-r2)
+#7 1.341 (7/23) Installing c-ares (1.34.5-r0)
+#7 1.368 (8/23) Installing libunistring (1.2-r0)
+#7 1.399 (9/23) Installing libidn2 (2.3.7-r0)
+#7 1.426 (10/23) Installing nghttp2-libs (1.64.0-r0)
+#7 1.455 (11/23) Installing libpsl (0.21.5-r3)
+#7 1.484 (12/23) Installing zstd-libs (1.5.6-r2)
+#7 1.528 (13/23) Installing libcurl (8.12.1-r1)
+#7 1.558 (14/23) Installing curl (8.12.1-r1)
+#7 1.585 (15/23) Installing libmd (1.1.0-r0)
+#7 1.610 (16/23) Installing libbsd (0.12.2-r0)
+#7 1.638 (17/23) Installing netcat-openbsd (1.226.1.1-r0)
+#7 1.665 (18/23) Installing postgresql-common (1.2-r1)
+#7 1.691 Executing postgresql-common-1.2-r1.pre-install
+#7 1.712 (19/23) Installing lz4-libs (1.10.0-r0)
+#7 1.744 (20/23) Installing libpq (17.4-r0)
+#7 1.780 (21/23) Installing postgresql17-client (17.4-r0)
+#7 1.827 (22/23) Installing tini (0.19.0-r3)
+#7 1.853 (23/23) Installing tzdata (2025b-r0)
+#7 1.938 Executing busybox-1.37.0-r12.trigger
+#7 1.941 Executing ca-certificates-20241121-r1.trigger
+#7 1.962 Executing postgresql-common-1.2-r1.trigger
+#7 1.964 * Setting postgresql17 as the default version
+#7 2.195 OK: 21 MiB in 40 packages
+#7 DONE 2.2s
+
+#8 [ 4/20] COPY package*.json ./
+#8 DONE 0.0s
+
+#9 [ 5/20] COPY tsconfig.json ./
+#9 DONE 0.0s
+
+#10 [ 6/20] COPY vite.config.ts ./
+#10 DONE 0.0s
+
+#11 [ 7/20] COPY drizzle.config.ts ./
+#11 DONE 0.0s
+
+#12 [ 8/20] COPY theme.json ./
+#12 DONE 0.0s
+
+#13 [ 9/20] COPY init-db.sh ./
+#13 DONE 0.0s
+
+#14 [10/20] COPY start.sh ./
+#14 DONE 0.0s
+
+#15 [11/20] RUN chmod +x ./init-db.sh ./start.sh
+#15 DONE 0.0s
+
+#16 [12/20] RUN npm ci --only=production
+#16 0.117 npm warn config only Use `--omit=dev` to omit dev dependencies from the install.
+#16 1.579 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#16 2.102 npm warn deprecated lodash.pick@4.4.0: This package is deprecated. Use destructuring assignment syntax instead.
+#16 2.235 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#16 3.784 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+#16 4.299 npm warn deprecated puppeteer@10.4.0: < 22.8.2 is no longer supported
+#16 20.68 
+#16 20.68 added 572 packages, and audited 573 packages in 21s
+#16 20.68 
+#16 20.68 64 packages are looking for funding
+#16 20.68   run `npm fund` for details
+#16 20.70 
+#16 20.70 13 high severity vulnerabilities
+#16 20.70 
+#16 20.70 To address issues that do not require attention, run:
+#16 20.70   npm audit fix
+#16 20.70 
+#16 20.70 To address all issues (including breaking changes), run:
+#16 20.70   npm audit fix --force
+#16 20.70 
+#16 20.70 Run `npm audit` for details.
+#16 20.70 npm notice
+#16 20.70 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#16 20.70 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#16 20.70 npm notice To update run: npm install -g npm@11.3.0
+#16 20.70 npm notice
+#16 DONE 20.8s
+
+#17 [13/20] RUN npm install --no-save vite esbuild @vitejs/plugin-react
+#17 3.835 
+#17 3.835 up to date, audited 573 packages in 4s
+#17 3.835 
+#17 3.835 64 packages are looking for funding
+#17 3.835   run `npm fund` for details
+#17 3.857 
+#17 3.857 13 high severity vulnerabilities
+#17 3.857 
+#17 3.857 To address issues that do not require attention, run:
+#17 3.857   npm audit fix
+#17 3.857 
+#17 3.857 To address all issues (including breaking changes), run:
+#17 3.857   npm audit fix --force
+#17 3.857 
+#17 3.857 Run `npm audit` for details.
+#17 DONE 4.1s
+
+#18 [14/20] COPY client ./client
+#18 DONE 0.0s
+
+#19 [15/20] COPY server ./server
+#19 DONE 0.0s
+
+#20 [16/20] COPY shared ./shared
+#20 DONE 0.0s
+
+#21 [17/20] RUN mkdir -p ./public
+#21 DONE 0.1s
+
+#22 [18/20] RUN npm run build
+#22 0.161 
+#22 0.161 > rest-express@1.0.0 build
+#22 0.161 > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+#22 0.161 
+#22 0.163 sh: vite: not found
+#22 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+------
+ > [18/20] RUN npm run build:
+0.161 
+0.161 > rest-express@1.0.0 build
+0.161 > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+0.161 
+0.163 sh: vite: not found
+------
+Dockerfile:49
+--------------------
+  47 |     
+  48 |     # Construir o projeto
+  49 | >>> RUN npm run build
+  50 |     
+  51 |     # Limpar cache e arquivos temporários
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+##########################################
+### Error
+### Tue, 15 Apr 2025 13:40:12 GMT
+##########################################
+
+Command failed with exit code 1: docker buildx build --network host -f /etc/easypanel/projects/ia/ecosaber/code/Dockerfile -t easypanel/ia/ecosaber --label 'keep=true' --no-cache --build-arg 'GIT_SHA=e2dfff79ba72a7ea1208c77597d85611aec6db8c' /etc/easypanel/projects/ia/ecosaber/code/

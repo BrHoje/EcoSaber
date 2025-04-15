@@ -1,8 +1,43 @@
+FROM node:18-alpine AS builder
+
+# Definir pasta de trabalho
+WORKDIR /build
+
+# Instalar dependências do sistema
+RUN apk update && apk add --no-cache \
+    postgresql-client \
+    curl \
+    ca-certificates \
+    tzdata
+
+# Configuração do Node para build
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+
+# Copiar arquivos de configuração
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY vite.config.ts ./
+COPY drizzle.config.ts ./
+COPY theme.json ./
+
+# Instalar TODAS as dependências (incluindo dev)
+RUN npm install
+
+# Copiar código-fonte
+COPY client ./client
+COPY server ./server
+COPY shared ./shared
+RUN mkdir -p ./public
+
+# Executar build
+RUN npm run build
+
+# Segunda fase - imagem de produção
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Instalar dependências do sistema necessárias
+# Instalar dependências do sistema necessárias para produção
 RUN apk update && apk add --no-cache \
     postgresql-client \
     bash \
@@ -12,62 +47,32 @@ RUN apk update && apk add --no-cache \
     tini \
     netcat-openbsd
 
-# Definir timezone
+# Configurações de ambiente
 ENV TZ=America/Sao_Paulo
-
-# Configurações de Node para ambiente de produção
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=512"
 
-# Copiar arquivos de configuração do projeto
+# Copiar apenas os arquivos de produção
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY vite.config.ts ./
-COPY drizzle.config.ts ./
-COPY theme.json ./
+COPY --from=builder /build/dist ./dist
+COPY --from=builder /build/public ./public
 
-# Copiar scripts de inicialização
+# Instalar apenas dependências de produção
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# Copiar scripts
 COPY init-db.sh ./
 COPY start.sh ./
 RUN chmod +x ./init-db.sh ./start.sh
 
-# Instalar todas as dependências para o build (incluindo devDependencies)
-RUN npm ci
-
-# Certificar-se de que os pacotes essenciais para o build estão disponíveis
-RUN npm list vite || npm install --no-save vite
-RUN npm list esbuild || npm install --no-save esbuild 
-RUN npm list @vitejs/plugin-react || npm install --no-save @vitejs/plugin-react
-
-# Copiar código-fonte
-COPY client ./client
-COPY server ./server
-COPY shared ./shared
-
-# Criar diretório public vazio (caso não exista no repositório)
-RUN mkdir -p ./public
-
-# Construir o projeto
-RUN npm run build
-
-# Limpar devDependencies após o build para reduzir o tamanho da imagem
-RUN npm prune --production
-
-# Limpar cache e arquivos temporários
-RUN npm cache clean --force && \
-    rm -rf /tmp/* /var/cache/apk/*
-
-# Usuário não-privilegiado para executar a aplicação
+# Aplicar segurança
 RUN addgroup -S nodeapp && \
     adduser -S -G nodeapp nodeapp && \
     chown -R nodeapp:nodeapp /app
 USER nodeapp
 
-# Expor a porta
+# Porta e entrypoint
 EXPOSE 5000
-
-# Usar tini como init para lidar com sinais e processos zumbis
 ENTRYPOINT ["/sbin/tini", "--"]
-
-# Comando para iniciar o servidor
 CMD ["./start.sh"]

@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.DS_Store
+*.env
+dist
+.cache
+*.dump
+*.log
+README.md
+EASYPANEL.md
+LICENSE
+db_import.sh
+docker-compose.yml
+.easypanel.yml

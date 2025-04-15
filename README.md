@@ -120,6 +120,8 @@ Para visualizar o esquema completo, consulte o arquivo `shared/schema.ts` no có
 
 ## Executando o Projeto
 
+### Usando Node.js diretamente
+
 Para iniciar o servidor de desenvolvimento:
 
 ```bash
@@ -134,6 +136,29 @@ Para construir e executar para produção:
 npm run build
 npm start
 ```
+
+### Usando Docker
+
+O projeto inclui configuração Docker para facilitar a implantação:
+
+```bash
+# Construir e iniciar os contêineres
+docker-compose up -d
+
+# Verificar logs
+docker-compose logs -f
+```
+
+O aplicativo estará disponível em `http://localhost:5000`.
+
+### Usando EasyPanel
+
+O projeto está configurado para implantação em EasyPanel:
+
+1. No EasyPanel, crie um novo projeto e aponte para o repositório GitHub
+2. Faça upload do arquivo `ecosaber_backup.dump` para o servidor
+3. EasyPanel usará automaticamente o Dockerfile e .easypanel.yml para configurar o ambiente
+4. O banco de dados será inicializado com os dados do backup
 
 ## Estrutura do Projeto
 

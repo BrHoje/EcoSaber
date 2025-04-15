@@ -1,0 +1,45 @@
+services:
+  ecosaber:
+    source:
+      type: dockerfile
+      image: ecosaber
+    deploy:
+      resources:
+        memoryReservation: 512M
+        memory: 1G
+    env:
+      - name: NODE_ENV
+        value: production
+      - name: DATABASE_URL
+        fromService:
+          name: ecosaber-db
+          type: postgres
+          property: connectionString
+    ports:
+      - port: 5000
+        published: 80
+    volumes:
+      - name: backup
+        path: /app/ecosaber_backup.dump
+        mode: ro
+
+  ecosaber-db:
+    source:
+      type: postgres
+      tag: 14
+    env:
+      - name: POSTGRES_PASSWORD
+        value: postgres
+      - name: POSTGRES_USER
+        value: postgres
+      - name: POSTGRES_DB
+        value: ecosaber
+    volumes:
+      - name: pgdata
+        path: /var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    size: 1Gi
+  backup:
+    hostPath: ./ecosaber_backup.dump

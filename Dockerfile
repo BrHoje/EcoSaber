@@ -31,11 +31,13 @@ COPY init-db.sh ./
 COPY start.sh ./
 RUN chmod +x ./init-db.sh ./start.sh
 
-# Instalar dependências, ignorando devDependencies
-RUN npm ci --only=production
+# Instalar todas as dependências para o build (incluindo devDependencies)
+RUN npm ci
 
-# Instalar somente dependências de desenvolvimento necessárias para o build
-RUN npm install --no-save vite esbuild @vitejs/plugin-react
+# Certificar-se de que os pacotes essenciais para o build estão disponíveis
+RUN npm list vite || npm install --no-save vite
+RUN npm list esbuild || npm install --no-save esbuild 
+RUN npm list @vitejs/plugin-react || npm install --no-save @vitejs/plugin-react
 
 # Copiar código-fonte
 COPY client ./client
@@ -47,6 +49,9 @@ RUN mkdir -p ./public
 
 # Construir o projeto
 RUN npm run build
+
+# Limpar devDependencies após o build para reduzir o tamanho da imagem
+RUN npm prune --production
 
 # Limpar cache e arquivos temporários
 RUN npm cache clean --force && \

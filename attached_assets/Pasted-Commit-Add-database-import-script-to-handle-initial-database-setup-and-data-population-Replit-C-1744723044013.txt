@@ -1,0 +1,137 @@
+Commit: Add database import script to handle initial database setup and data population.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: b0319d7a-975e-4e5d-8c39-9651d34726e3
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/16054385-7574-4b93-bc6e-67205e0ab5a5/eac7b057-ec53-434d-9669-632fad358a34.jpg 
+##########################################
+### Download Github Archive Started...
+### Tue, 15 Apr 2025 13:15:05 GMT
+##########################################
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 898B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 1.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/17] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 712.33kB done
+#5 DONE 0.0s
+
+#6 [ 4/17] COPY package*.json ./
+#6 CACHED
+
+#7 [ 2/17] WORKDIR /app
+#7 CACHED
+
+#8 [ 6/17] COPY vite.config.ts ./
+#8 CACHED
+
+#9 [ 5/17] COPY tsconfig.json ./
+#9 CACHED
+
+#10 [ 3/17] RUN apk update && apk add --no-cache     postgresql-client     bash     curl     ca-certificates     tzdata
+#10 CACHED
+
+#11 [ 7/17] COPY drizzle.config.ts ./
+#11 CACHED
+
+#12 [ 8/17] COPY theme.json ./
+#12 DONE 0.0s
+
+#13 [ 9/17] COPY init-db.sh ./
+#13 DONE 0.0s
+
+#14 [10/17] COPY start.sh ./
+#14 DONE 0.0s
+
+#15 [11/17] RUN chmod +x ./init-db.sh ./start.sh
+#15 DONE 0.1s
+
+#16 [12/17] RUN npm install
+#16 1.609 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#16 2.121 npm warn deprecated lodash.pick@4.4.0: This package is deprecated. Use destructuring assignment syntax instead.
+#16 2.225 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#16 4.357 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#16 4.384 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#16 4.732 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+#16 4.870 npm warn deprecated puppeteer@10.4.0: < 22.8.2 is no longer supported
+#16 20.00 
+#16 20.00 added 660 packages, and audited 661 packages in 20s
+#16 20.00 
+#16 20.00 73 packages are looking for funding
+#16 20.00   run `npm fund` for details
+#16 20.03 
+#16 20.03 20 vulnerabilities (7 moderate, 13 high)
+#16 20.03 
+#16 20.03 To address issues that do not require attention, run:
+#16 20.03   npm audit fix
+#16 20.03 
+#16 20.03 To address all issues (including breaking changes), run:
+#16 20.03   npm audit fix --force
+#16 20.03 
+#16 20.03 Run `npm audit` for details.
+#16 20.03 npm notice
+#16 20.03 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#16 20.03 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#16 20.03 npm notice To update run: npm install -g npm@11.3.0
+#16 20.03 npm notice
+#16 DONE 20.6s
+
+#17 [13/17] COPY client ./client
+#17 DONE 0.0s
+
+#18 [14/17] COPY server ./server
+#18 DONE 0.0s
+
+#19 [15/17] COPY shared ./shared
+#19 DONE 0.0s
+
+#20 [16/17] RUN mkdir -p ./public
+#20 DONE 0.1s
+
+#21 [17/17] RUN npm run build
+#21 0.143 
+#21 0.143 > rest-express@1.0.0 build
+#21 0.143 > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+#21 0.143 
+#21 0.369 vite v5.4.14 building for production...
+#21 0.417 transforming...
+#21 2.168 ✓ 1868 modules transformed.
+#21 2.345 rendering chunks...
+#21 2.352 computing gzip size...
+#21 2.365 ../dist/public/index.html                   2.19 kB │ gzip:   0.90 kB
+#21 2.366 ../dist/public/assets/index-CMSpzWUV.css    0.83 kB │ gzip:   0.37 kB
+#21 2.366 ../dist/public/assets/index-Bu_Zi1Lu.js   583.71 kB │ gzip: 179.06 kB
+#21 2.366 
+#21 2.366 (!) Some chunks are larger than 500 kB after minification. Consider:
+#21 2.366 - Using dynamic import() to code-split the application
+#21 2.366 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#21 2.366 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#21 2.366 ✓ built in 1.98s
+#21 2.423 
+#21 2.423   dist/index.js  72.4kb
+#21 2.423 
+#21 2.423 ⚡ Done in 2ms
+#21 DONE 2.5s
+
+#22 exporting to image
+#22 exporting layers
+#22 exporting layers 2.6s done
+#22 writing image sha256:4b3b203cbc0d09c978e66d02c8179e637e2afa419e2255030f1a73f6a5b95c67 done
+#22 naming to docker.io/easypanel/ia/ecosaber done
+#22 DONE 2.6s
+##########################################
+### Success
+### Tue, 15 Apr 2025 13:15:36 GMT
+##########################################

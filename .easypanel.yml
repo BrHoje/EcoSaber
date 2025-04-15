@@ -1,8 +1,8 @@
 port: 80
 env:
   NODE_ENV: production
-  DATABASE_URL: postgres://postgres:47b47cd6c33582dafa23@ia_ecosaber-database:5432/ecosaber?sslmode=disable
+  DATABASE_URL: postgres://postgres:47b47cd6c33582dafa23@c5qiwz.easypanel.host:5432/ecosaber?sslmode=disable
   PGPASSWORD: 47b47cd6c33582dafa23
   PGUSER: postgres
-  PGHOST: ia_ecosaber-database
+  PGHOST: c5qiwz.easypanel.host
   PGDATABASE: ecosaber
